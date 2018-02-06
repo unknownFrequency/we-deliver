@@ -10,9 +10,20 @@ class ProductsController < ApplicationController
   def create
     # render plain: params[:product].inspect
     @product = Product.new(product_params)
-    @product.save
-    flash[:success] = "Produktet er tilføjet"
-    redirect_to @product
+    if @product.save
+      flash[:success] = "Produktet er tilføjet"
+      redirect_to @product
+    else
+      if @product.errors.any?
+        flash[:error] = "Produktet blev ikke oprettet"
+        # flash[:error] = #{@product}"Produktet blev ikke oprettet"
+        # @product.errors.full_messages.each do |msg|
+        #   render plain: msg
+        # end
+        # render plain: @messages.inspect
+        render :new
+      end
+    end
   end
 
   def edit
@@ -27,6 +38,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:products).permit(:name, :description, :price, :brand)
+    params.require(:products).permit(:name, :description, :price, :brand, :category)
   end
 end
