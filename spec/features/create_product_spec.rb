@@ -13,6 +13,6 @@ RSpec.feature "Creating product" do
 
     click_button "Gem"
     expect(page).to have_content("Produktet er tilføjet")
-    # expect(page.current_path).to eq(products_path)
+    expect(page.current_path).to eq(product_path(1))
   end
 end
