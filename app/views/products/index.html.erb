@@ -1,4 +1,25 @@
 <h1>Product index</h1>
-
-<%= link_to "Nyt Produkt", new_product_path %>
+<table class="responsive-table">
+        <thead>
+                <tr>
+                        <td>Produkt</td>
+                        <td>Producent</td>
+                        <td>Pris</td>
+                        <td>Beskrivelse</td>
+                        <td>Kategori</td>
+                </tr>
+        </thead>
+        <tbody>
+                <% @products.each do |product| %>
+                <tr>
+                        <td><%= link_to product.name, product_path(product) %></td>
+                        <td><%= product.brand %></td>
+                        <td><%= product.price %></td>
+                        <td><%= truncate product.description, length: 300 %></td>
+                        <td><%= product.category %></td>
+                </tr>
+                <% end %>
+        <tbody>
+</table>
+<%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 

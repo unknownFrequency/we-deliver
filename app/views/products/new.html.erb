@@ -1,8 +1,8 @@
 <div class="row" style="padding: 4em 0 0 30%">
         <%= form_with scope: :products, url: products_path, local: true, :html => {class: "col s12", role: "form"} do |form| %>
                 <% if @product.errors.any? %>
-                        <%= @product.errors.full_messages.each do |msg| %>
-                                <li><%= msg %></li>
+                        <% @product.errors.full_messages.each do |msg| %>
+                                <li class="error" li><%= msg %></li>
                         <% end %>
                 <% end %>
                 <div class="row">

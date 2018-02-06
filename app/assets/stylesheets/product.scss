@@ -1,3 +1,10 @@
-// Place all the styles related to the Product controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.error {
+        color: red;
+        width: 50%;
+        height: 3em;
+        margin-top: 2em;
+        list-style:none;
+        background-color: #999;
+        padding: 1em;
+        border-bottom: 3px solid grey;
+}

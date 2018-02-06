@@ -4,4 +4,6 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :brand, presence: true
   validates :category, presence: true
+
+  default_scope { order(name: :asc) }
 end

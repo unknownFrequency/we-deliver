@@ -15,12 +15,7 @@ class ProductsController < ApplicationController
       redirect_to @product
     else
       if @product.errors.any?
-        flash[:error] = "Produktet blev ikke oprettet"
-        # flash[:error] = #{@product}"Produktet blev ikke oprettet"
-        # @product.errors.full_messages.each do |msg|
-        #   render plain: msg
-        # end
-        # render plain: @messages.inspect
+        flash.now[:error] = "Produktet blev ikke oprettet"
         render :new
       end
     end
