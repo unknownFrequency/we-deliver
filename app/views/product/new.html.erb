@@ -1,5 +1,5 @@
 <div class="row" style="padding: 4em 0 0 30%">
-        <%= form_with scope: :product, local: true do |form| %>
+        <%= form_with scope: :product, url: "/product", local: true do |form| %>
                 <div class="row">
                         <div class="input-field col s6">
                                 <%= form.text_field :name, class: "validate" %>

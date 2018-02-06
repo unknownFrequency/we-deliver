@@ -8,6 +8,10 @@ class ProductController < ApplicationController
   end
 
   def create
+    # render plain: params[:product].inspect
+    @product = Product.new(product_params)
+    @product.save
+    redirect_to @product
   end
 
   def edit
@@ -17,5 +21,11 @@ class ProductController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+  end
+
+  private
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :brand)
   end
 end
