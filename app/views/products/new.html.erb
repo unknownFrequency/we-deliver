@@ -1,9 +1,9 @@
 <div class="row" style="padding: 4em 0 0 30%">
-        <%= form_with scope: :product, url: "/product", local: true do |form| %>
+        <%= form_with scope: :products, url: products_path, local: true, :html => {class: "col s12", role: "form"} do |form| %>
                 <div class="row">
                         <div class="input-field col s6">
                                 <%= form.text_field :name, class: "validate" %>
-                                <%= form.label "Produktnavn" %>
+                                <%= form.label :name, "Produktnavn" %>
                         </div>
                         <div class="input-field col s6"></div>
                 </div>
@@ -11,12 +11,20 @@
                 <div class="row">
                         <div class="input-field col s1">
                                 <%= form.text_field :price, class: "validate" %>
-                                <%= form.label "Pris" %>
+                                <%= form.label :price, "Pris" %>
                         </div>
                         <div class="input-field col s1"></div>
                         <div class="input-field col s4">
                                 <%= form.text_field :brand, class: "validate" %>
-                                <%= form.label "Producent" %>
+                                <%= form.label :brand, "Producent" %>
+                        </div>
+                        <div class="input-field col s6"></div>
+                </div>
+
+                <div class="row">
+                        <div class="input-field col s6">
+                                <%= form.text_field :category, class: "validate" %>
+                                <%= form.label :category, "Kategori" %>
                         </div>
                         <div class="input-field col s6"></div>
                 </div>
@@ -25,7 +33,7 @@
                         <div class="col s6">
                                 <div class="input-field">
                                         <%= form.text_area :description, class: "materialize-textarea" %>
-                                        <%= form.label "Beskrivelse" %>
+                                        <%= form.label :description, "Beskrivelse" %>
                                 </div>
                         </div>
                         <div class="col s6"></div>
@@ -33,7 +41,9 @@
 
                 <div class="row">
                         <div class="col s1">
-                                <%= form.submit class: "btn" %>
+                                        <i class="material-icons">
+                                                <%= form.submit "Gem", class: "btn btn-large" %>
+                                        </i>
                         </div>
                         <div class="col s11"></div>
                 </div>

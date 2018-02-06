@@ -1,16 +1,17 @@
-class ProductController < ApplicationController
+class ProductsController < ApplicationController
   def index
-    
+    @products = Product.all 
   end
 
   def new
-
+    @product = Product.new
   end
 
   def create
     # render plain: params[:product].inspect
     @product = Product.new(product_params)
     @product.save
+    flash[:success] = "Produktet er tilføjet"
     redirect_to @product
   end
 
@@ -26,6 +27,6 @@ class ProductController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :brand)
+    params.require(:products).permit(:name, :description, :price, :brand)
   end
 end
