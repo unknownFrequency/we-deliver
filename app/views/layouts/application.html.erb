@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+
     <% flash.each do |key, message| %>
       <% if key == "success" %>
         <div class="align-center green darken-1">
