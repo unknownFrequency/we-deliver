@@ -10,7 +10,7 @@ RSpec.feature "Signup user" do
     fill_in "Password igen", with: "password"
     click_button "Opret"
 
-    # expect(page).to have_content('Din konto blev oprettet')
+    expect(page).to have_content('Din konto blev oprettet')
   end
 
   scenario "without valid credentials" do
@@ -18,8 +18,8 @@ RSpec.feature "Signup user" do
     click_link "Opret konto"
     fill_in "Telefon", with: ""
     fill_in "Email", with: ""
-    fill_in "Password", with: ""
-    fill_in "Password igen", with: ""
+    fill_in "Password", with: "123123"
+    fill_in "Password igen", with: "123123"
     click_button "Opret"
 
     # expect(page).to have_content("Konto ikke oprettet")
