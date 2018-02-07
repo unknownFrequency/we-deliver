@@ -5,11 +5,11 @@ RSpec.feature "Creating product" do
     visit "/"
     click_link "Nyt Produkt" #capabaya func
 
-    fill_in "products[name]", with: "Fanta"
-    fill_in "products[description]", with: "Sodavand med bobler"
-    fill_in "products[price]", with: 25
-    fill_in "products[brand]", with: "Coca-Cola Company" 
-    fill_in "products[category]", with: "Sodavand" 
+    fill_in "product[name]", with: "Fanta"
+    fill_in "product[description]", with: "Sodavand med bobler"
+    fill_in "product[price]", with: 25
+    fill_in "product[brand]", with: "Coca-Cola Company" 
+    fill_in "product[category]", with: "Sodavand" 
 
     click_button "Gem"
     expect(page).to have_content("Produktet er tilføjet")
@@ -19,11 +19,11 @@ RSpec.feature "Creating product" do
   scenario "A user fails to create a new proudct" do
     visit '/products/new'
 
-    fill_in "products[name]", with: ""
-    fill_in "products[description]", with: ""
-    fill_in "products[price]", with: nil 
-    fill_in "products[brand]", with: "" 
-    fill_in "products[category]", with: "" 
+    fill_in "product[name]", with: ""
+    fill_in "product[description]", with: ""
+    fill_in "product[price]", with: nil 
+    fill_in "product[brand]", with: "" 
+    fill_in "product[category]", with: "" 
     
     click_button "Gem"
 
@@ -32,6 +32,6 @@ RSpec.feature "Creating product" do
     expect(page).to have_content("Description can't be blank")
     expect(page).to have_content("Price can't be blank")
     expect(page).to have_content("Brand can't be blank")
-    expect(page).to have_content("Category can't be blank")
+    expect(page).not_to have_content("Category can't be blank")
   end
 end
