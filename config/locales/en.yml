@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  devise:
+    sessions:
+      signed_in: 'Du er logged ind'
+      signed_out: 'Du er logged ud'
+      sign_up: 'Din konto blev oprettet'
