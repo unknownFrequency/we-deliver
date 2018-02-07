@@ -15,8 +15,7 @@ RSpec.feature "User signs in" do
     fill_in "Password", with: @user.password
     click_button "Log ind"
 
-    expect(page).to have_content("Signed in successfully.")
-    expect(page).to have_content("Signed in as #{@user.name}.")
+    expect(page).to have_content("Du er logged ind")
     expect(page).not_to have_link("Login")
     expect(page).not_to have_link("Opret konto")
   end
