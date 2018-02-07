@@ -40,6 +40,17 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      flash[:success] = "Produktet blev slettet"
+      redirect_to products_path
+    else
+      flash[:error] = "Produktet blev ikke slettet"
+      redirect_to product_path(@product)
+    end
+  end
+
   protected
     def resource_not_found
      flash[:error] = "Produktet kunne ikke findes" 
