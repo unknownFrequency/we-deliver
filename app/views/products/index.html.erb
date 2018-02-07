@@ -1,25 +1,34 @@
 <h1>Product index</h1>
 <table class="responsive-table">
-        <thead>
-                <tr>
-                        <td>Produkt</td>
-                        <td>Producent</td>
-                        <td>Pris</td>
-                        <td>Beskrivelse</td>
-                        <td>Kategori</td>
-                </tr>
-        </thead>
-        <tbody>
-                <% @products.each do |product| %>
-                <tr>
-                        <td><%= link_to product.name, product_path(product) %></td>
-                        <td><%= product.brand %></td>
-                        <td><%= product.price %></td>
-                        <td><%= truncate product.description, length: 300 %></td>
-                        <td><%= product.category %></td>
-                </tr>
-                <% end %>
-        <tbody>
+  <thead>
+    <tr>
+      <td>Produkt</td>
+      <td>Producent</td>
+      <td>Pris</td>
+      <td>Beskrivelse</td>
+      <td>Kategori</td>
+   </tr>
+  </thead>
+  
+  <tbody>
+  <% if @products.empty? %>
+    <div class="card blue-grey red darken-1">
+      <div class="card-content white-text">
+        <span class="card-title error">Ingen produkter</span>
+      </div>
+    </div>
+  <% else %>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.price %></td>
+        <td><%= truncate product.description, length: 300 %></td>
+        <td><%= product.category %></td>
+       </tr>
+     <% end %>
+   <% end %>
+  <tbody>
 </table>
 <%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 

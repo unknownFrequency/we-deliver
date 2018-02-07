@@ -20,4 +20,25 @@ RSpec.feature "Listing products" do
     expect(page).to have_content(@product1.category)
     expect(page).to have_content(@product2.category)
   end
+
+
+  scenario "We list all products" do
+    Product.delete_all
+    visit products_path
+
+    expect(page).not_to have_content(@product1.name)
+    expect(page).not_to have_content(@product2.name)
+    expect(page).not_to have_content(@product1.description)
+    expect(page).not_to have_content(@product2.description)
+    expect(page).not_to have_content(@product1.price)
+    expect(page).not_to have_content(@product2.price)
+    expect(page).not_to have_content(@product1.brand)
+    expect(page).not_to have_content(@product2.brand)
+    expect(page).not_to have_content(@product1.category)
+    expect(page).not_to have_content(@product2.category)
+
+    within ("span.error") do 
+      expect(page).to have_content("Ingen produkter")
+    end
+  end
 end
