@@ -1,4 +1,5 @@
 require "rails_helper"
+Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Creating product" do
   scenario "A user creates a new product" do
@@ -12,6 +13,8 @@ RSpec.feature "Creating product" do
     fill_in "product[category]", with: "Sodavand" 
 
     click_button "Gem"
+    expect(page).to have_css("#flash-key")
+    # element = page.find("#flash-key", visible: :all, text: "Produktet er tilføjet")
     expect(page).to have_content("Produktet er tilføjet")
     expect(page.current_path).to eq(product_path(1))
   end
