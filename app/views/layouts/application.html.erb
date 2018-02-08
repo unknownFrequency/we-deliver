@@ -3,7 +3,6 @@
   <head>
     <title>WeDeliver</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,21 +14,23 @@
     <div class="row">
       <div class="col s12 m6">
         <% flash.each do |key, message| %>
-          <% if key == "success" %>
-            <div class="card blue-grey darken-1 "><!-- TODO: add css class for error and success -->
-              <div class="card-content white-text">
-                <span class="card-title success"><%= key %></span>
-                <p><%= message %></p>
-              </div>
+          <div id="flash-container" class="card blue-grey red darken-1">
+            <div class="card-content white-text">
+              <p id="flash-key"></p>
+              <script>
+                window.onload = () => {
+                  document.getElementById("flash-key").innerHTML = "<%= key.capitalize %>"
+                  document.getElementById("flash-message").innerHTML = "<%= message %>"
+
+                  setTimeout(() => {
+                    document.getElementById("flash-key").classList.add("hidden")
+                    document.getElementById("flash-container").classList.add("hidden")
+                  }, 5000)
+                }
+              </script>
+              <p id="flash-message"></p>
             </div>
-          <% else %>
-            <div class="card blue-grey red darken-1">
-              <div class="card-content white-text">
-                <span class="card-title error"><%= key %></span>
-                <p><%= message %></p>
-              </div>
-            </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>

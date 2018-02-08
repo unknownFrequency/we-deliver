@@ -1,5 +1,33 @@
 {
-  "name": "weDeliver",
+  "name": "wedeliver",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.2.1"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unknownFrequency/we-deliver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unknownFrequency/we-deliver/issues"
+  },
+  "homepage": "https://github.com/unknownFrequency/we-deliver#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-stage-3": "^6.24.1",
+    "webpack-dev-server": "^2.11.1"
+  }
 }
