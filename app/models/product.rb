@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   # validates :category, presence: true
 
   default_scope { order(name: :asc) }
+
+  belongs_to :user
 end
