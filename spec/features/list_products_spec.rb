@@ -2,8 +2,13 @@ require "rails_helper"
 
 RSpec.feature "Listing products" do
   before do
-    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand")
-    @product2 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand")
+    @user = User.create!(
+      name: "Ruben T", address: "her 12", zip: "7741",
+      email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
+    login_as(@user)
+
+    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @user)
+    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @user)
   end
 
   scenario "We list all products" do

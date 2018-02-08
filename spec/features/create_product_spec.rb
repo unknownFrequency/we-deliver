@@ -20,10 +20,11 @@ RSpec.feature "Creating product" do
     fill_in "product[category]", with: "Sodavand" 
 
     click_button "Gem"
+    expect(Product.last.user).to eq @user
     expect(page).to have_css("#flash-key")
     # element = page.find("#flash-key", visible: :all, text: "Produktet er tilføjet")
     expect(page).to have_content("Produktet er tilføjet")
-    expect(page.current_path).to eq(product_path(1))
+    expect(page.current_path).to eq product_path(1) 
   end
 
   scenario "A user fails to create a new proudct" do

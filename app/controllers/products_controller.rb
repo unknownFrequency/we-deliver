@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def create
     # render plain: params[:product].inspect
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
       flash[:success] = "Produktet er tilføjet"
       redirect_to @product
@@ -28,6 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.user = current_user
     if @product.update(product_params)
       flash[:success] = "Produktet blev opdateret"
       redirect_to product_path(@product)
