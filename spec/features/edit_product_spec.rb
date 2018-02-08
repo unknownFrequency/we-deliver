@@ -1,20 +1,21 @@
 require "rails_helper"
+Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Edit a product" do
   before do
-    @user = User.create!(
-      name: "Ruben T", address: "her 12", zip: "7741",
+    @admin = User.create!(
+      name: "Ruben T", address: "her 12", zip: "7741", admin: 1,
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    login_as(@user)
 
     @product = Product.create(
       name: "test", brand: "test",
       description: "test", price: 100.5,
-      category: "test", user_id: @user.id
+      category: "test", user_id: @admin.id
     )
   end
 
-  scenario "A user updates a product" do
+  scenario "Admin  updates a product" do
+    login_as(@admin)
     visit products_path
     
     click_link @product.name
@@ -32,6 +33,7 @@ RSpec.feature "Edit a product" do
   end
 
   scenario "A user fails to update a product" do
+    login_as(@admin)
     visit products_path
     
     click_link @product.name
