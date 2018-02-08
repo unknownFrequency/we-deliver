@@ -2,6 +2,13 @@ require "rails_helper"
 Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Creating product" do
+  before do
+    @user = User.create!(
+      name: "Ruben T", address: "her 12", zip: "7741",
+      email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
+    login_as(@user)
+  end
+
   scenario "A user creates a new product" do
     visit "/"
     click_link "Nyt Produkt" #capabaya func

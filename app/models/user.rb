@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :authentication_keys => [:phone] 
   validates :email, uniqueness: true, presence: false
-  validates :phone ,uniqueness: true
+  validates :phone ,uniqueness: true, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+
+
 
   def email_required?
     false
