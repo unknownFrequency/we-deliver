@@ -15,22 +15,25 @@
                 </div>
 
                 <div class="row">
-                        <div class="input-field col s1">
-                                <%= form.text_field :price, class: "validate" %>
-                                <%= form.label :price, "Pris" %>
-                        </div>
-                        <div class="input-field col s1"></div>
                         <div class="input-field col s4">
                                 <%= form.text_field :brand, class: "validate" %>
                                 <%= form.label :brand, "Producent" %>
+                        </div>
+                        <div class="input-field col s2">
+                                <%= form.text_field :price, class: "validate" %>
+                                <%= form.label :price, "Pris" %>
                         </div>
                         <div class="input-field col s6"></div>
                 </div>
 
                 <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                                 <%= form.text_field :category, class: "validate" %>
                                 <%= form.label :category, "Kategori" %>
+                        </div>
+                        <div class="input-field col s2">
+                                <%= form.text_field :qty, class: "validate" %>
+                                <%= form.label :qty, "Antal" %>
                         </div>
                         <div class="input-field col s6"></div>
                 </div>

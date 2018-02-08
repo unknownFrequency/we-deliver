@@ -1,4 +1,8 @@
-<h1>Product index</h1>
+<h1>Produkter</h1>
+<% if user_signed_in? %>
+  <%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
+<% end %>
+
 <table class="responsive-table">
   <thead>
     <tr>
@@ -7,6 +11,7 @@
       <td>Pris</td>
       <td>Beskrivelse</td>
       <td>Kategori</td>
+      <td>Antal</td>
    </tr>
   </thead>
   
@@ -25,10 +30,10 @@
         <td><%= product.price %></td>
         <td><%= truncate product.description, length: 300 %></td>
         <td><%= product.category %></td>
+        <td><%= product.qty %></td>
        </tr>
      <% end %>
    <% end %>
   <tbody>
 </table>
-<%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 
