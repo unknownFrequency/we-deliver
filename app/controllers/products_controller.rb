@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :isAdmin, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -26,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # render plain: isAdmin.inspect
   end
 
   def update
@@ -66,4 +68,5 @@ class ProductsController < ApplicationController
     def set_product 
       @product = Product.find(params[:id])
     end
+
 end

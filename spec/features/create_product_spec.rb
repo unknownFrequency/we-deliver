@@ -3,15 +3,25 @@ Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Creating product" do
   before do
+    @admin = User.create!(admin: 1, email: "ab@a.a", phone: "20177777", password: "password", password_confirmation: "password")
     @user = User.create!(
       name: "Ruben T", address: "her 12", zip: "7741",
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    login_as(@user)
+    @product = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
   end
 
-  scenario "A user creates a new product" do
+  scenario "User tried to create a new product" do
+    login_as(@user)
+    visit products_path
+    expect(page).not_to have_link("Nyt Produkt")
+    visit product_path(1)
+    expect(page.current_path).to eq product_path(1) 
+  end
+
+  scenario "Admin creates a new product" do
+    login_as(@admin)
     visit "/"
-    click_link "Nyt Produkt" #capabaya func
+    click_link "Nyt Produkt"
 
     fill_in "product[name]", with: "Fanta"
     fill_in "product[description]", with: "Sodavand med bobler"
@@ -20,14 +30,14 @@ RSpec.feature "Creating product" do
     fill_in "product[category]", with: "Sodavand" 
 
     click_button "Gem"
-    expect(Product.last.user).to eq @user
+    expect(Product.last.user).to eq @admin
     expect(page).to have_css("#flash-key")
-    # element = page.find("#flash-key", visible: :all, text: "Produktet er tilføjet")
     expect(page).to have_content("Produktet er tilføjet")
-    expect(page.current_path).to eq product_path(1) 
+    expect(page.current_path).to eq product_path(2) 
   end
 
   scenario "A user fails to create a new proudct" do
+    login_as(@admin)
     visit '/products/new'
 
     fill_in "product[name]", with: ""

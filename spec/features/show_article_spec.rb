@@ -12,7 +12,7 @@ RSpec.feature "Showing an product" do
     )
   end
   
-  scenario "Amin views a product" do
+  scenario "Admin views a product" do
     login_as(@admin)
     visit products_path
     click_link @product.name

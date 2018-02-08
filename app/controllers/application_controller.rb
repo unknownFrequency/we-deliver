@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     ## for individual error messages
   end
 
+  def isAdmin
+    redirect_back fallback_location: root_path unless user_signed_in? && current_user.admin
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
       :sign_up,

@@ -6,8 +6,16 @@ RSpec.feature "Listing products" do
       name: "Ruben T", address: "her 12", zip: "7741",
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
-    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @user)
-    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @user)
+    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
+    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
+    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
+  end
+
+
+  scenario "admin sees Nyt Produkt" do
+    login_as(@admin)
+    visit products_path
+    expect(page).to have_link("Nyt Produkt")
   end
 
   scenario "all products without user" do
@@ -31,10 +39,8 @@ RSpec.feature "Listing products" do
     login_as(@user)
     visit products_path
 
-    expect(page).to have_content(@user.phone)
-    expect(page).to have_css("#phone")
+    expect(page).not_to have_link("Nyt Produkt")
 
-    expect(page).to have_link("Nyt Produkt")
     expect(page).to have_content(@product1.name)
     expect(page).to have_content(@product2.name)
     expect(page).to have_content(@product1.description)
