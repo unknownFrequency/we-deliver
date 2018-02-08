@@ -8,7 +8,9 @@
       </ul>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
-          <li><%= link_to "Log ud", destroy_user_session_path, method: :delete %></li>
+          <li style="color: #666; margin-right: 2em;">Tlf. (<%=  current_user.phone %>)</li>
+          <li><div class="divider"></div></li>
+          <li style="margin-right: 2em;"><%= link_to "Log ud", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Opret konto", new_user_registration_path %></li>
           <li><div class="divider"></div></li>
