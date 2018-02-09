@@ -1,60 +1,75 @@
 <div class="row" style="padding: 4em 0 0 30%">
-        <%# form_with scope: :products, url: products_path, local: true, :html => {class: "col s12", role: "form"} do |form| %1> %>
-        <%= form_for @product, :html => {class: "col s12", role: "form"} do |form| %>
-                <% if @product.errors.any? %>
-                        <% @product.errors.full_messages.each do |msg| %>
-                                <li class="error" li><%= msg %></li>
-                        <% end %>
-                <% end %>
-                <div class="row">
-                        <div class="input-field col s6">
-                                <%= form.text_field :name, class: "validate" %>
-                                <%= form.label :name, "Produktnavn" %>
-                        </div>
-                        <div class="input-field col s6"></div>
-                </div>
+  <%# form_with scope: :products, url: products_path, local: true, :html => {class: "col s12", role: "form"} do |form| %1> %>
+  <%= form_for @product, :html => {class: "col s12", role: "form"} do |form| %>
+    <% if @product.errors.any? %>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li class="error" li><%= msg %></li>
+      <% end %>
+    <% end %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= form.text_field :name, class: "validate" %>
+        <%= form.label :name, "Produktnavn" %>
+      </div>
+      <div class="input-field col s6"></div>
+    </div>
 
-                <div class="row">
-                        <div class="input-field col s4">
-                                <%= form.text_field :brand, class: "validate" %>
-                                <%= form.label :brand, "Producent" %>
-                        </div>
-                        <div class="input-field col s2">
-                                <%= form.text_field :price, class: "validate" %>
-                                <%= form.label :price, "Pris" %>
-                        </div>
-                        <div class="input-field col s6"></div>
-                </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <%# select_tag :brand_id, @brands, class: "dropdown-content"  %>
+        <%# options_from_collection_for_select(@brands, :id, :name) %>
+        <%= form.label :brand, "Producent" %>
+        <br /><br />
+        <select name="product[brand_id]" id="product_brand_id">
+          <% @brands.each do |brand| %>
+            <option value="<%= brand.id %>">
+            <%= brand.name %>
+            </option>
+          <% end %>
+        </select>
+        <%# form.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true %>
+      </div>
+      <div class="input-field col s2">
+        <%= form.text_field :price, class: "validate" %>
+        <%= form.label :price, "Pris" %>
+      </div>
+      <div class="input-field col s6"></div>
+    </div>
 
-                <div class="row">
-                        <div class="input-field col s4">
-                                <%= form.text_field :category, class: "validate" %>
-                                <%= form.label :category, "Kategori" %>
-                        </div>
-                        <div class="input-field col s2">
-                                <%= form.text_field :qty, class: "validate" %>
-                                <%= form.label :qty, "Antal" %>
-                        </div>
-                        <div class="input-field col s6"></div>
-                </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <% #form.text_field :category, class: "validate" %>
+        <% #form.label :category, "Kategori" %>
+      </div>
+      <div class="input-field col s2">
+        <%= form.text_field :qty, class: "validate" %>
+        <%= form.label :qty, "Antal" %>
+      </div>
+      <div class="input-field col s6"></div>
+    </div>
 
-                <div class="row">
-                        <div class="col s6">
-                                <div class="input-field">
-                                        <%= form.text_area :description, class: "materialize-textarea" %>
-                                        <%= form.label :description, "Beskrivelse" %>
-                                </div>
-                        </div>
-                        <div class="col s6"></div>
-                </div>
+    <div class="row">
+      <div class="col s6">
+        <div class="input-field">
+          <%= form.text_area :description, class: "materialize-textarea" %>
+          <%= form.label :description, "Beskrivelse" %>
+        </div>
+      </div>
+      <div class="col s6"></div>
+    </div>
 
-                <div class="row">
-                        <div class="col s1">
-                                        <i class="material-icons">
-                                                <%= form.submit "Gem", class: "btn btn-large" %>
-                                        </i>
-                        </div>
-                        <div class="col s11"></div>
-                </div>
-        <% end %>
+    <div class="row">
+      <div class="col s1">
+        <i class="material-icons">
+          <%= form.submit "Gem", class: "btn btn-large" %>
+        </i>
+      </div>
+      <div class="col s11"></div>
+    </div>
+  <% end %>
 </div>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+});
+</script>

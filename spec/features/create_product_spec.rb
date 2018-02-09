@@ -7,7 +7,9 @@ RSpec.feature "Creating product" do
     @user = User.create!(
       name: "Ruben T", address: "her 12", zip: "7741",
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    @product = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
+
+    brand = Brand.create!(name: "Coca-Cola")
+    @product = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: brand , user: @admin)
   end
 
   scenario "User tried to create a new product" do

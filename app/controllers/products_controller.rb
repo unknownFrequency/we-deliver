@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @brands = Brand.all 
     @product = Product.new
   end
 
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
     # render plain: params[:product].inspect
     @product = Product.new(product_params)
     @product.user = current_user
+
     if @product.save
       flash[:success] = "Produktet er tilføjet"
       redirect_to @product
@@ -62,7 +64,7 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:user_id, :name, :description, :price, :brand, :category, :qty)
+      params.require(:product).permit(:user_id, :brand_id, :name, :description, :price, :brand, :qty)
     end
 
     def set_product 
