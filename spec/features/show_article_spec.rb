@@ -5,10 +5,12 @@ RSpec.feature "Showing an product" do
     @admin = User.create!(admin: 1, email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
     @user = User.create!(email: "b@a.a", phone: "30131269", password: "password", password_confirmation: "password")
 
+    @brand = Brand.create(name: "testtest")
+
     @product = Product.create(
-      name: "test", brand: "test",
+      name: "test", brand_id: 1,
       description: "test", price: 100.5,
-      category: "test", user: @admin
+      user: @admin
     )
   end
   
@@ -18,10 +20,10 @@ RSpec.feature "Showing an product" do
     click_link @product.name
 
     expect(page).to have_content(@product.name)
-    expect(page).to have_content(@product.brand)
+    expect(page).to have_content(@brand.name)
     expect(page).to have_content(@product.description)
     expect(@product.price).to be_kind_of(Float)
-    expect(page).to have_content(@product.category)
+    # expect(page).to have_content(@product.category)
     expect(page).to have_link("Rediger")
     expect(page).to have_link("Slet")
   end
@@ -30,11 +32,10 @@ RSpec.feature "Showing an product" do
     visit products_path
     click_link @product.name
 
-    expect(page).to have_content(@product.name)
-    expect(page).to have_content(@product.brand)
+    expect(page).to have_content(@brand.name)
     expect(page).to have_content(@product.description)
     expect(@product.price).to be_kind_of(Float)
-    expect(page).to have_content(@product.category)
+    # expect(page).to have_content(@product.category)
     expect(page).not_to have_link("Rediger")
     expect(page).not_to have_link("Slet")
   end
@@ -44,11 +45,10 @@ RSpec.feature "Showing an product" do
     visit products_path
     click_link @product.name
 
-    expect(page).to have_content(@product.name)
-    expect(page).to have_content(@product.brand)
+    expect(page).to have_content(@brand.name)
     expect(page).to have_content(@product.description)
     expect(@product.price).to be_kind_of(Float)
-    expect(page).to have_content(@product.category)
+    # expect(page).to have_content(@product.category)
     expect(page).not_to have_link("Rediger")
     expect(page).not_to have_link("Slet")
   end

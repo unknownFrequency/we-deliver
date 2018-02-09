@@ -24,9 +24,10 @@
     </div>
   <% else %>
     <% @products.each do |product| %>
+      <%# <% brand = (product.brand_id) %1> %>
       <tr>
         <td><%= link_to product.name, product_path(product) %></td>
-        <%# <td><%=# product.brand %1></td> %>
+        <td><%= Brand.find(product.brand_id).name %></td>
         <td><%= product.price %></td>
         <td><%= truncate product.description, length: 300 %></td>
         <%# <td><%=# product.category %1></td> %>

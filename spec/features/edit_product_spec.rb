@@ -7,10 +7,11 @@ RSpec.feature "Edit a product" do
       name: "Ruben T", address: "her 12", zip: "7741", admin: 1,
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
+    brand = Brand.create(name: "test")
+
     @product = Product.create(
-      name: "test", brand: "test",
-      description: "test", price: 100.5,
-      category: "test", user_id: @admin.id
+      name: "test", description: "test", price: 100.5,
+      user_id: @admin.id, brand_id: brand.id
     )
   end
 
@@ -24,8 +25,8 @@ RSpec.feature "Edit a product" do
     fill_in "product[name]", with: "Fanta"
     fill_in "product[description]", with: "Sodavand med bobler"
     fill_in "product[price]", with: 25
-    fill_in "product[brand]", with: "Coca-Cola Company" 
-    fill_in "product[category]", with: "Sodavand" 
+    select "test", from: "product[brand_id]" 
+    # fill_in "product[category]", with: "Sodavand" 
     click_button "Gem"
 
     expect(page).to have_content("Produktet blev opdateret")
@@ -42,8 +43,8 @@ RSpec.feature "Edit a product" do
     fill_in "product[name]", with: ""
     fill_in "product[description]", with: ""
     fill_in "product[price]", with: "" 
-    fill_in "product[brand]", with: "" 
-    fill_in "product[category]", with: "" 
+    select "", from: "product[brand_id]" 
+    # fill_in "product[category]", with: "" 
     click_button "Gem"
 
     expect(page).to have_content("Produktet blev ikke opdateret")

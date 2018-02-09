@@ -4,10 +4,11 @@ RSpec.describe "Products", type: :request do
   before do
     @user = User.create!(email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
+    @brand = Brand.create(name: "test")
+
     @product = Product.create(
-      name: "test", brand: "test",
-      description: "test", price: 100.5,
-      category: "test", user: @admin
+      name: "test", brand_id: 1,
+      description: "test", price: 100.5, user: @admin
     )
   end
 

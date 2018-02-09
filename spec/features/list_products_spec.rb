@@ -6,9 +6,10 @@ RSpec.feature "Listing products" do
       name: "Ruben T", address: "her 12", zip: "7741",
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
+    @brand = Brand.create(name: "test");
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
-    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
-    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand: "Coca-Cola", category: "Sodavand", user: @admin)
+    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
+    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
   end
 
 
@@ -29,10 +30,7 @@ RSpec.feature "Listing products" do
     expect(page).to have_content(@product2.description)
     expect(page).to have_content(@product1.price)
     expect(page).to have_content(@product2.price)
-    expect(page).to have_content(@product1.brand)
-    expect(page).to have_content(@product2.brand)
-    expect(page).to have_content(@product1.category)
-    expect(page).to have_content(@product2.category)
+    expect(page).to have_content(@brand.name)
   end
 
   scenario "all products with user" do
@@ -47,10 +45,8 @@ RSpec.feature "Listing products" do
     expect(page).to have_content(@product2.description)
     expect(page).to have_content(@product1.price)
     expect(page).to have_content(@product2.price)
-    expect(page).to have_content(@product1.brand)
-    expect(page).to have_content(@product2.brand)
-    expect(page).to have_content(@product1.category)
-    expect(page).to have_content(@product2.category)
+    expect(page).to have_content(@product1.brand_id)
+    expect(page).to have_content(@product2.brand_id)
   end
 
   scenario "We list all products" do
@@ -63,10 +59,10 @@ RSpec.feature "Listing products" do
     expect(page).not_to have_content(@product2.description)
     expect(page).not_to have_content(@product1.price)
     expect(page).not_to have_content(@product2.price)
-    expect(page).not_to have_content(@product1.brand)
-    expect(page).not_to have_content(@product2.brand)
-    expect(page).not_to have_content(@product1.category)
-    expect(page).not_to have_content(@product2.category)
+    expect(page).not_to have_content(@product1.brand_id)
+    expect(page).not_to have_content(@product2.brand_id)
+    # expect(page).not_to have_content(@product1.category)
+    # expect(page).not_to have_content(@product2.category)
 
     within ("span.error") do 
       expect(page).to have_content("Ingen produkter")

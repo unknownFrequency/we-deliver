@@ -11,10 +11,11 @@ RSpec.feature "Delete a product" do
       name: "Ruben T", address: "her 12", zip: "7741", admin: true,
       email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
 
+    brand = Brand.create(name: "test")
+
     @product = Product.create(
-      name: "test", brand: "test",
-      description: "test", price: 100.5,
-      category: "test", user_id: @user.id
+      name: "test", brand_id: brand.id,
+      description: "test", price: 100.5, user_id: @user.id
     )
   end
 

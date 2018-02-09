@@ -8,7 +8,7 @@ RSpec.feature "Creating product" do
       name: "Ruben T", address: "her 12", zip: "7741",
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
-    brand = Brand.create!(name: "Coca-Cola")
+    brand = Brand.create!(name: "Coca")
     @product = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: brand , user: @admin)
   end
 
@@ -28,8 +28,8 @@ RSpec.feature "Creating product" do
     fill_in "product[name]", with: "Fanta"
     fill_in "product[description]", with: "Sodavand med bobler"
     fill_in "product[price]", with: 25
-    fill_in "product[brand]", with: "Coca-Cola Company" 
-    fill_in "product[category]", with: "Sodavand" 
+    select "Coca", from: "product[brand_id]"
+    # fill_in "product[category_id]", with: "Sodavand" 
 
     click_button "Gem"
     expect(Product.last.user).to eq @admin
@@ -45,8 +45,8 @@ RSpec.feature "Creating product" do
     fill_in "product[name]", with: ""
     fill_in "product[description]", with: ""
     fill_in "product[price]", with: nil 
-    fill_in "product[brand]", with: "" 
-    fill_in "product[category]", with: "" 
+    select "", from: "product[brand_id]"
+    # fill_in "product[category_id]", with: "" 
     
     click_button "Gem"
 
@@ -54,7 +54,6 @@ RSpec.feature "Creating product" do
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Description can't be blank")
     expect(page).to have_content("Price can't be blank")
-    expect(page).to have_content("Brand can't be blank")
-    expect(page).not_to have_content("Category can't be blank")
+    # expect(page).not_to have_content("Category can't be blank")
   end
 end

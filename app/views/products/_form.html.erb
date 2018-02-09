@@ -21,7 +21,7 @@
         <%= form.label :brand, "Producent" %>
         <br /><br />
         <select name="product[brand_id]" id="product_brand_id">
-          <% @brands.each do |brand| %>
+          <% Brand.all.each do |brand| %>
             <option value="<%= brand.id %>">
             <%= brand.name %>
             </option>
