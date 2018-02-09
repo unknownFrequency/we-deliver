@@ -3,6 +3,9 @@
     <h1 class="center-align"><%= @product.name  %></h1>
     <ul>
       <li><%= Brand.find(@product.brand_id).name %></li>
+      <li><%= @product.description %></li>
+      <li><%= @product.price %></li>
+      <li><%= @product.qty %></li>
     </ul>
   </div>
 
