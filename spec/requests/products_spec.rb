@@ -5,11 +5,16 @@ RSpec.describe "Products", type: :request do
     @user = User.create!(email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
     @brand = Brand.create(name: "test")
+    category = Category.create(name: "cat")
 
     @product = Product.create(
       name: "test", brand_id: 1,
       description: "test", price: 100.5, user: @admin
     )
+
+    expect(@product).to be_a_kind_of(Product)
+    expect(category).to be_a_kind_of(Category)
+    CategoriesProduct.create(product_id: @product.id, category_id: category.id)
   end
 
   describe "GET /products/new" do

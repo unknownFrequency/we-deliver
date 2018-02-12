@@ -8,11 +8,15 @@ RSpec.feature "Edit a product" do
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
     brand = Brand.create(name: "test")
+    category = Category.create(name: "Sodavand")
 
     @product = Product.create(
       name: "test", description: "test", price: 100.5,
       user_id: @admin.id, brand_id: brand.id
     )
+    expect(@product).to be_a_kind_of(Product)
+    expect(category).to be_a_kind_of(Category)
+    @categoriesProduct = CategoriesProduct.create!(product_id: @product.id, category_id: category.id)
   end
 
   scenario "Admin  updates a product" do
@@ -26,7 +30,7 @@ RSpec.feature "Edit a product" do
     fill_in "product[description]", with: "Sodavand med bobler"
     fill_in "product[price]", with: 25
     select "test", from: "product[brand_id]" 
-    # fill_in "product[category]", with: "Sodavand" 
+    select "Sodavand", from: "category_id" 
     click_button "Gem"
 
     expect(page).to have_content("Produktet blev opdateret")

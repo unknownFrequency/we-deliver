@@ -21,11 +21,12 @@ class ProductsController < ApplicationController
         @product.categories << Category.find(cat_id) 
       end
       flash[:success] = "Produktet er tilføjet"
+      redirect_to product_path(@product)
     elsif @product.errors.any?
-      flash.now[:error] = "Produktet blev ikke oprettet"
+      flash[:error] = "Produktet blev ikke oprettet"
+      render :edit
+      # redirect_to new_product_path
     end
-
-    redirect_to products_path
   end
 
   def edit
@@ -45,9 +46,15 @@ class ProductsController < ApplicationController
         end
       end
 
-      params[:category_ids].each do |cat_id|
-        unless cat_ids.include?(cat_id.to_i)
-          @product.categories << Category.find(cat_id)
+      if params[:category_ids].kind_of?(Array)
+        params[:category_ids].each do |cat_id|
+          unless cat_ids.include?(cat_id.to_i)
+            @product.categories << Category.find(cat_id)
+          end 
+        else
+          unless cat_ids.include?(cat_id.to_i)
+            @product.categories << Category.find(cat_id)
+          end 
         end 
       end
 
@@ -66,9 +73,6 @@ class ProductsController < ApplicationController
     categories.each do |cat|
       @categoryNames.push Category.find(cat.category_id)
     end
-
-    # render plain: Category.find(categories[0].category_id).inspect
-    # render plain: @categoryNames.inspect
   end
 
   def destroy
@@ -83,8 +87,8 @@ class ProductsController < ApplicationController
 
   protected
     def resource_not_found
-     flash[:error] = "Produktet kunne ikke findes" 
-     # redirect_to products_path
+      flash[:error] = "Produktet kunne ikke findes" 
+      redirect_to products_path
     end
 
   private
