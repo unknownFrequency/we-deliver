@@ -2,10 +2,14 @@
   <div class="card-panel teal lighten-2">
     <h1 class="center-align"><%= @product.name  %></h1>
     <ul>
-      <li><%= Brand.find(@product.brand_id).name %></li>
-      <li><%= @product.description %></li>
-      <li><%= @product.price %></li>
-      <li><%= @product.qty %></li>
+      <li>Navn: <%= Brand.find(@product.brand_id).name %></li>
+      <li>Beskrivelse: <%= @product.description %></li>
+      <li>Pris: <%= @product.price %></li>
+      <li>Qty: <%= @product.qty %></li>
+      Kategori(er)
+      <% @categoryNames.each do |cat| %>
+        <li><%= cat %></li>
+      <% end %>
     </ul>
   </div>
 

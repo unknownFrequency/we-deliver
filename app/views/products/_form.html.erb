@@ -23,7 +23,7 @@
         <select name="product[brand_id]" id="product_brand_id">
           <% Brand.all.each do |brand| %>
             <option value="<%= brand.id %>">
-            <%= brand.name %>
+              <%= brand.name %>
             </option>
           <% end %>
         </select>
@@ -34,6 +34,14 @@
         <%= form.label :price, "Pris" %>
       </div>
       <div class="input-field col s6"></div>
+        <%= form.label :category, "Kategori" %>
+        <select name="product[category]" id="category">
+          <% Category.all.each do |cat| %>
+            <option value="<%= cat.id %>">
+              <%= cat.name %>
+            </option>
+          <% end %>
+        </select>
     </div>
 
     <div class="row">

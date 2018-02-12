@@ -5,11 +5,14 @@ RSpec.feature "Creating product" do
   before do
     @admin = User.create!(admin: 1, email: "ab@a.a", phone: "20177777", password: "password", password_confirmation: "password")
     @user = User.create!(
-      name: "Ruben T", address: "her 12", zip: "7741",
+      name: "Ruben T", address: "her 12", zip: "7741", 
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
     brand = Brand.create!(name: "Coca")
+    @category = Category.create(name: "Sodavand")
     @product = Product.create(name: "Cola", description: "Bubbely", price: 25, brand: brand , user: @admin)
+
+    @categoriesProduct = CategoriesProduct.create!(product_id: 1, category_id: 1)
   end
 
   scenario "User tried to create a new product" do
@@ -29,6 +32,7 @@ RSpec.feature "Creating product" do
     fill_in "product[description]", with: "Sodavand med bobler"
     fill_in "product[price]", with: 25
     select "Coca", from: "product[brand_id]"
+    select "Sodavand", from: "product[category]"
     # fill_in "product[category_id]", with: "Sodavand" 
 
     click_button "Gem"
@@ -38,7 +42,7 @@ RSpec.feature "Creating product" do
     expect(page.current_path).to eq product_path(2) 
   end
 
-  scenario "A user fails to create a new proudct" do
+  scenario "Admin fails to create a new proudct" do
     login_as(@admin)
     visit '/products/new'
 
@@ -46,7 +50,7 @@ RSpec.feature "Creating product" do
     fill_in "product[description]", with: ""
     fill_in "product[price]", with: nil 
     select "", from: "product[brand_id]"
-    # fill_in "product[category_id]", with: "" 
+    select "", from: "product[category]"
     
     click_button "Gem"
 

@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   default_scope { order(name: :asc) }
 
   belongs_to :user
-  # has_many :categories
+  has_many :categories, through: :categories_products
   belongs_to :brand
-  accepts_nested_attributes_for :brand
+  # accepts_nested_attributes_for :brand
 end

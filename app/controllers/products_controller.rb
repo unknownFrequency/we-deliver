@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
 
-    if @product.save
+    if @product.save && CategoriesProduct.create(product_id: @product.id, category_id: params[:category])
       flash[:success] = "Produktet er tilføjet"
       redirect_to @product
     else
@@ -44,6 +44,13 @@ class ProductsController < ApplicationController
   end
 
   def show
+    categories = CategoriesProduct.where(product_id: params[:id])
+    render plain: categories[0].product_id.inspect
+    @categoryNames = []
+    categories.each do |cat|
+      @categoryNames[] = Category.find(id: cat.category_id)
+    end
+    render plain: @categoryNames.inspect
   end
 
   def destroy
