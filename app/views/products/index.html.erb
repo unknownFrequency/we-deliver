@@ -2,6 +2,7 @@
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 <% end %>
+<%= @current_cart.inspect %>
 
 <table class="responsive-table">
   <thead>
@@ -12,6 +13,7 @@
       <td>Beskrivelse</td>
       <td>Kategori</td>
       <td>Antal</td>
+      <td><span style="font-size: 2em">+</span></td>
    </tr>
   </thead>
   <tbody>
@@ -35,6 +37,15 @@
           <% end %>
         </td>
         <td><%= product.qty %></td>
+        <td><span style="font-size: 2em">
+            <%= form_tag order_items_path do %>
+              <%= hidden_field_tag :product_id, product.id %>
+              <%= number_field_tag :qty, 1 %>
+              <%= hidden_field_tag :price, 1 %>
+
+              <%= submit_tag "Læg i kurv" %>
+            <% end %>
+        </span></td>
        </tr>
      <% end %>
    <% end %>
