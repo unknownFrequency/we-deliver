@@ -27,7 +27,6 @@ RSpec.feature "Showing an product" do
     expect(page).to have_content(@category.name)
     expect(page).to have_content(@product.description)
     expect(page).to have_content(@product.qty)
-    expect(@product.price).to be_kind_of(Float)
     # expect(page).to have_content(@product.category)
     expect(page).to have_link("Rediger")
     expect(page).to have_link("Slet")
@@ -39,7 +38,6 @@ RSpec.feature "Showing an product" do
 
     expect(page).to have_content(@brand.name)
     expect(page).to have_content(@product.description)
-    expect(@product.price).to be_kind_of(Float)
     # expect(page).to have_content(@product.category)
     expect(page).not_to have_link("Rediger")
     expect(page).not_to have_link("Slet")
@@ -52,7 +50,7 @@ RSpec.feature "Showing an product" do
 
     expect(page).to have_content(@brand.name)
     expect(page).to have_content(@product.description)
-    expect(@product.price).to be_kind_of(Float)
+    # expect(@product.price).to be_kind_of(Decimal)
     # expect(page).to have_content(@product.category)
     expect(page).not_to have_link("Rediger")
     expect(page).not_to have_link("Slet")

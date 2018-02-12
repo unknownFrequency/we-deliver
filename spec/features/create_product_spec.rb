@@ -24,17 +24,17 @@ RSpec.feature "Creating product" do
     expect(page.current_path).to eq product_path(1) 
   end
 
-  scenario "Admin creates a new product" do
+  scenario "admin creates a new product" do
     login_as(@admin)
     visit "/"
     click_link "Nyt Produkt"
 
-    fill_in "product[name]", with: "Fanta"
-    fill_in "product[description]", with: "Sodavand med bobler"
+    fill_in "product[name]", with: "fanta"
+    fill_in "product[description]", with: "sodavand med bobler"
     fill_in "product[price]", with: 25
     select "Coca", from: "product[brand_id]"
     select "Sodavand", from: "category_id"
-    # fill_in "product[category_id]", with: "Sodavand" 
+    # fill_in "product[category_id]", with: "sodavand" 
 
     click_button "Gem"
     expect(Product.last.user).to eq @admin
