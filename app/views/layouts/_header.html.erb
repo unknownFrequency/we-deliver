@@ -8,6 +8,7 @@
       </ul>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
+          <li><%= link_to "#{current_cart.items_count} i kurv", cart_path %></li>
           <li id="phone" style="color: #666; margin-right: 2em;">Tlf. (<%=  current_user.phone %>)</li>
           <li><div class="divider"></div></li>
           <li style="margin-right: 2em;"><%= link_to "Log ud", destroy_user_session_path, method: :delete %></li>
