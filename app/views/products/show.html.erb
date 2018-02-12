@@ -2,13 +2,16 @@
   <div class="card-panel teal lighten-2">
     <h1 class="center-align"><%= @product.name  %></h1>
     <ul>
-      <li>Navn: <%= Brand.find(@product.brand_id).name %></li>
+      <li>Producent: <%= @product.brand.name %></li>
       <li>Beskrivelse: <%= @product.description %></li>
       <li>Pris: <%= @product.price %></li>
       <li>Qty: <%= @product.qty %></li>
-      Kategori(er)
-      <% @categoryNames.each do |cat| %>
-        <li><%= cat %></li>
+      <% if @categoryNames.count === 1 %>
+        <li>Kategori: <%= @categoryNames[0].name %></li>
+      <% elsif @categoryNames.count > 1 %>
+        <% @categoryNames.each do |category| %>
+          <li>Kategorier: <%= category.name %> </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

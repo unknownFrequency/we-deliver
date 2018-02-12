@@ -1,3 +1,5 @@
 class Category < ApplicationRecord
-  has_many :products, through: :categories_products
+  validates :name, presence: :true
+
+  has_and_belongs_to_many :products
 end

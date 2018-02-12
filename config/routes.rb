@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
+  get 'categories/create'
+
+  get 'categories/update'
+
+  get 'categories/edit'
+
+  get 'categories/show'
+
+  get 'index/create'
+
+  get 'index/update'
+
+  get 'index/edit'
+
+  get 'index/show'
+
   devise_for :users
   resources :products do
     resources :categories

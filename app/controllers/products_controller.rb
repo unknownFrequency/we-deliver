@@ -13,19 +13,18 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # render plain: params[:product].inspect
     @product = Product.new(product_params)
     @product.user = current_user
 
-    if @product.save && CategoriesProduct.create(product_id: @product.id, category_id: params[:category])
+    if @product.save 
+      category = Category.find(params[:category_id]) 
+      @product.categories << category
       flash[:success] = "Produktet er tilføjet"
-      redirect_to @product
-    else
-      if @product.errors.any?
-        flash.now[:error] = "Produktet blev ikke oprettet"
-        render :new
-      end
+    elsif @product.errors.any?
+      flash.now[:error] = "Produktet blev ikke oprettet"
     end
+
+    redirect_to products_path
   end
 
   def edit
@@ -35,6 +34,8 @@ class ProductsController < ApplicationController
   def update
     @product.user = current_user
     if @product.update(product_params)
+      category = Category.find(params[:category_id]) 
+      @product.categories << category
       flash[:success] = "Produktet blev opdateret"
       redirect_to product_path(@product)
     else
@@ -44,13 +45,15 @@ class ProductsController < ApplicationController
   end
 
   def show
-    categories = CategoriesProduct.where(product_id: params[:id])
-    render plain: categories[0].product_id.inspect
+    categories = CategoriesProduct.all.where(product_id: params[:id])
+
     @categoryNames = []
     categories.each do |cat|
-      @categoryNames[] = Category.find(id: cat.category_id)
+      @categoryNames.push Category.find(cat.category_id)
     end
-    render plain: @categoryNames.inspect
+
+    # render plain: Category.find(categories[0].category_id).inspect
+    # render plain: @categoryNames.inspect
   end
 
   def destroy
@@ -66,12 +69,13 @@ class ProductsController < ApplicationController
   protected
     def resource_not_found
      flash[:error] = "Produktet kunne ikke findes" 
-     redirect_to products_path
+     # redirect_to products_path
     end
 
   private
     def product_params
-      params.require(:product).permit(:user_id, :brand_id, :name, :description, :price, :brand, :qty)
+      params.require(:product)
+        .permit(:user_id, :brand_id, :name, :description, :price, :qty, categories_products_attributes: [:product_id, :category_id]) 
     end
 
     def set_product 

@@ -35,7 +35,7 @@
       </div>
       <div class="input-field col s6"></div>
         <%= form.label :category, "Kategori" %>
-        <select name="product[category]" id="category">
+        <select name="category_id" id="category_id">
           <% Category.all.each do |cat| %>
             <option value="<%= cat.id %>">
               <%= cat.name %>

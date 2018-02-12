@@ -24,13 +24,14 @@
     </div>
   <% else %>
     <% @products.each do |product| %>
-      <%# <% brand = (product.brand_id) %1> %>
       <tr>
         <td><%= link_to product.name, product_path(product) %></td>
-        <td><%= Brand.find(product.brand_id).name %></td>
         <td><%= product.price %></td>
+        <td><%= product.brand %></td>
         <td><%= truncate product.description, length: 300 %></td>
-        <%# <td><%=# product.category %1></td> %>
+        <% product.categories.each do |c| %>
+          <td><%= c.name %></td>
+        <% end %>
         <td><%= product.qty %></td>
        </tr>
      <% end %>
