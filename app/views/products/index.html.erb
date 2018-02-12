@@ -25,14 +25,13 @@
   <% else %>
     <% @products.each do |product| %>
       <tr>
-        <%= product.categories.inspect %><br />
         <td><%= link_to product.name, product_path(product) %></td>
         <td><%= product.brand.name %></td>
         <td><%= product.price %></td>
         <td><%= truncate product.description, length: 300 %></td>
-        <% product.categories.each do |c| %>
-          <td><%= c.name %></td>
-        <% end %>
+        <td><% product.categories.each do |c| %>
+          <%= c.name %>
+        <% end %></td>
         <td><%= product.qty %></td>
        </tr>
      <% end %>
