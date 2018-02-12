@@ -14,7 +14,6 @@
       <td>Antal</td>
    </tr>
   </thead>
-  
   <tbody>
   <% if @products.empty? %>
     <div class="card blue-grey red darken-1">
@@ -26,8 +25,8 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.brand.name %></td>
         <td><%= product.price %></td>
-        <td><%= product.brand %></td>
         <td><%= truncate product.description, length: 300 %></td>
         <% product.categories.each do |c| %>
           <td><%= c.name %></td>

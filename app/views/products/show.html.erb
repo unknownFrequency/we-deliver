@@ -9,9 +9,11 @@
       <% if @categoryNames.count === 1 %>
         <li>Kategori: <%= @categoryNames[0].name %></li>
       <% elsif @categoryNames.count > 1 %>
-        <% @categoryNames.each do |category| %>
-          <li>Kategorier: <%= category.name %> </li>
-        <% end %>
+        <li>Kategorier:
+          <% @categoryNames.each do |category| %>
+             <%= category.name %>.&nbsp;
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
