@@ -13,12 +13,14 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # render plain: params.inspect
     @product = Product.new(product_params)
     @product.user = current_user
 
     if @product.save 
-      category = Category.find(params[:category_id]) 
-      @product.categories << category
+      params[:category_ids].each do |cat_id|
+        @product.categories << Category.find(cat_id) 
+      end
       flash[:success] = "Produktet er tilføjet"
     elsif @product.errors.any?
       flash.now[:error] = "Produktet blev ikke oprettet"

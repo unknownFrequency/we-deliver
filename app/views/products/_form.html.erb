@@ -19,29 +19,34 @@
         <%# select_tag :brand_id, @brands, class: "dropdown-content"  %>
         <%# options_from_collection_for_select(@brands, :id, :name) %>
         <%= form.label :brand, "Producent" %>
-        <br /><br />
+
         <select name="product[brand_id]" id="product_brand_id">
           <% Brand.all.each do |brand| %>
-            <option value="<%= brand.id %>">
+            <option class="dropdown-content" value="<%= brand.id %>">
               <%= brand.name %>
             </option>
           <% end %>
         </select>
-        <%# form.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true %>
       </div>
       <div class="input-field col s2">
         <%= form.text_field :price, class: "validate" %>
         <%= form.label :price, "Pris" %>
       </div>
       <div class="input-field col s6"></div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s4">
         <%= form.label :category, "Kategori" %>
-        <select name="category_id" id="category_id">
+        <select name="category_ids[]" id="category_id" multiple>
           <% Category.all.each do |cat| %>
-            <option value="<%= cat.id %>">
+            <option  class="dropdown-content" value="<%= cat.id %>">
               <%= cat.name %>
             </option>
           <% end %>
         </select>
+      </div>
+      <div class="input-field col s6"></div>
     </div>
 
     <div class="row">
