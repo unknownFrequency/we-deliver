@@ -29,9 +29,11 @@
         <td><%= product.brand.name %></td>
         <td><%= product.price %></td>
         <td><%= truncate product.description, length: 300 %></td>
-        <td><% product.categories.each do |c| %>
-          <%= c.name %>
-        <% end %></td>
+        <td>
+          <% product.categories.each do |c| %>
+            <%= c.name %>
+          <% end %>
+        </td>
         <td><%= product.qty %></td>
        </tr>
      <% end %>

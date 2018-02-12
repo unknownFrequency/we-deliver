@@ -3,21 +3,23 @@ Rails.application.routes.draw do
 
   get 'categories/create'
 
-  get 'categories/update'
-
   get 'categories/edit'
+
+  get 'categories/update'
 
   get 'categories/show'
 
   get 'index/create'
 
-  get 'index/update'
-
   get 'index/edit'
+
+  get 'index/update'
 
   get 'index/show'
 
   devise_for :users
+
+  resources :categories
   resources :products do
     resources :categories
     resources :brands
