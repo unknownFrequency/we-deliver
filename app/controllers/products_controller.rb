@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
     # render plain: params.inspect
     @product = Product.new(product_params)
     @product.user = current_user
-
     if @product.save 
       params[:category_ids].each do |cat_id|
         @product.categories << Category.find(cat_id) 
@@ -34,10 +33,24 @@ class ProductsController < ApplicationController
   end
 
   def update
+    cat_ids = []
     @product.user = current_user
+
     if @product.update(product_params)
-      category = Category.find(params[:category_id]) 
-      @product.categories << category
+      # Look for dublicates
+      if CategoriesProduct.where(product_id: @product.id).any?
+        categories_product = CategoriesProduct.where(product_id: @product.id)
+        categories_product.each do |cat|
+          cat_ids.push cat.category_id
+        end
+      end
+
+      params[:category_ids].each do |cat_id|
+        unless cat_ids.include?(cat_id.to_i)
+          @product.categories << Category.find(cat_id)
+        end 
+      end
+
       flash[:success] = "Produktet blev opdateret"
       redirect_to product_path(@product)
     else

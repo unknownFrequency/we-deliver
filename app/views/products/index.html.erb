@@ -15,6 +15,7 @@
    </tr>
   </thead>
   <tbody>
+
   <% if @products.empty? %>
     <div class="card blue-grey red darken-1">
       <div class="card-content white-text">
@@ -24,6 +25,7 @@
   <% else %>
     <% @products.each do |product| %>
       <tr>
+        <%= product.categories.inspect %><br />
         <td><%= link_to product.name, product_path(product) %></td>
         <td><%= product.brand.name %></td>
         <td><%= product.price %></td>
