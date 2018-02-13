@@ -26,20 +26,28 @@ RSpec.feature "Creating product" do
 
   scenario "admin creates a new product" do
     login_as(@admin)
-    visit "/"
+    visit products_path 
     click_link "Nyt Produkt"
 
     fill_in "product[name]", with: "fanta"
     fill_in "product[description]", with: "sodavand med bobler"
     fill_in "product[price]", with: 25
+    fill_in "product[qty]", with: 25
     select "Coca", from: "product[brand_id]"
     select "Sodavand", from: "category_id"
     # fill_in "product[category_id]", with: "sodavand" 
 
     click_button "Gem"
     expect(Product.last.user).to eq @admin
+
+    visit product_path(Product.last) # it redirects to "Resource not found" if I dont use visit here
     # expect(page).to have_css("#flash-key")
-    expect(page).to have_content("Produktet er tilføjet")
+    # expect(page).to have_content("Produktet er tilføjet")
+    expect(page).to have_content(Product.last.name)
+    expect(page).to have_content("Producent  #{Product.last.brand.name}")
+    expect(page).to have_content("Beskrivelse #{Product.last.description}")
+    expect(page).to have_content("Antal #{Product.last.qty}")
+    expect(page).to have_content("Kategori: #{Product.last.category.name}")
     expect(page.current_path).to eq product_path(2) 
   end
 
