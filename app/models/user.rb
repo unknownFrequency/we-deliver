@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :authentication_keys => [:phone] 
-  validates :email, uniqueness: true, presence: false
-  validates :phone ,uniqueness: true, presence: true
-  validates :password, presence: true
+
+  validates :email, allow_blank: true, presence: false
+  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 } 
+  validates :password, presence: true, length: { minimum: 8 }
   validates :password_confirmation, presence: true
 
   has_many :products
