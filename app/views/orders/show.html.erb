@@ -1,7 +1,11 @@
 <h2>Faktura</h2>
-
-<%= number_to_currency @order.total, unit: "kr. " %>
-<%# <% @order.items.each do |item| %&> %>
-<%#   <%= item %1> %>
-<%# <% end %1> %>
-<%= @order.inspect %>
+<mark><%= current_user.name.nil? ? "" : current_user.name %></mark>
+<ul>
+  <li>
+    <%= current_user.email.nil? ? "" : "Email: #{current_user.email}" %>
+  </li>
+  <li>Tlf. <%= current_user.phone %></li>
+  <li>Leverings addresse: <%= @order.delivery_address %>, <%= @order.zip %></li>
+  <li>I alt <%= number_to_currency @order.total, unit: "kr. " %></li>
+  <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er lukket" %></li>
+</ul>

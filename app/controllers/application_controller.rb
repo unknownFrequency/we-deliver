@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart, :isAdmin, :number_to_kr
 
   def current_cart
-    @current_cart ||= ShoppingCart.new(token: cart_token)
+    if user_signed_in?
+      @current_cart ||= ShoppingCart.new(token: cart_token, user: current_user)
+    else
+      @current_cart ||= ShoppingCart.new(token: cart_token)
+    end
   end
 
 

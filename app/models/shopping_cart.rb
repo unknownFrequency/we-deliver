@@ -2,14 +2,21 @@ class ShoppingCart
   #allow us to use: current_cart.total
   delegate :total, to: :order
 
-  def initialize(token:)
+  def initialize(token:, user: nil)
     @token = token
+    @user = user
   end
 
   def order
     # if order has not been assigned, set total to 0
-    @order ||= Order.find_or_create_by(token: @token, status: "cart") do |order|
-      order.total = 0
+    if @user
+      @order ||= Order.find_or_create_by(token: @token, status: "cart", user_id: @user.id) do |order|
+        order.total = 0
+      end
+    else
+      @order ||= Order.find_or_create_by(token: @token, status: "cart") do |order|
+        order.total = 0
+      end
     end
   end
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :order_items, path: "/cart/items"
 
   get "/cart/checkout", to: "orders#new", as: :checkout
-  patch "/cart/checkout", to: "orders#create"
-  # resources :orders
+  patch "/cart/checkout", to: "orders#create", as: :confirm_order
+  get "/orders/:id", to: "orders#show", as: :order
 
 end

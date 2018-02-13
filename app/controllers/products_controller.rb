@@ -51,10 +51,10 @@ class ProductsController < ApplicationController
           unless cat_ids.include?(cat_id.to_i)
             @product.categories << Category.find(cat_id)
           end 
-        else
-          unless cat_ids.include?(cat_id.to_i)
-            @product.categories << Category.find(cat_id)
-          end 
+        end 
+      else
+        unless cat_ids.include?(cat_id.to_i)
+          @product.categories << Category.find(cat_id)
         end 
       end
 
