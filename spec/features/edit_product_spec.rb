@@ -28,12 +28,17 @@ RSpec.feature "Edit a product" do
 
     fill_in "product[name]", with: "Fanta"
     fill_in "product[description]", with: "Sodavand med bobler"
-    fill_in "product[price]", with: 25
+    fill_in "product[price]", with: "1176786"
     select "test", from: "product[brand_id]" 
     select "Sodavand", from: "category_id" 
     click_button "Gem"
 
-    expect(page).to have_content("Produktet blev opdateret")
+    visit product_path(Product.where(name: "Fanta").first)
+
+    expect(page).to have_content("Fanta")
+    expect(page).to have_content("Sodavand med bobler")
+    expect(page).to have_content("1176786")
+    expect(page).to have_content("Sodavand")
     expect(page.current_path).to eq product_path(@product)
   end
 

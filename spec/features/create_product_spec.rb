@@ -35,19 +35,17 @@ RSpec.feature "Creating product" do
     fill_in "product[qty]", with: 25
     select "Coca", from: "product[brand_id]"
     select "Sodavand", from: "category_id"
-    # fill_in "product[category_id]", with: "sodavand" 
 
     click_button "Gem"
     expect(Product.last.user).to eq @admin
 
     visit product_path(Product.last) # it redirects to "Resource not found" if I dont use visit here
-    # expect(page).to have_css("#flash-key")
-    # expect(page).to have_content("Produktet er tilføjet")
+
     expect(page).to have_content(Product.last.name)
-    expect(page).to have_content("Producent  #{Product.last.brand.name}")
-    expect(page).to have_content("Beskrivelse #{Product.last.description}")
-    expect(page).to have_content("Antal #{Product.last.qty}")
-    expect(page).to have_content("Kategori: #{Product.last.category.name}")
+    expect(page).to have_content("#{Product.last.brand.name}")
+    expect(page).to have_content("#{Product.last.description}")
+    expect(page).to have_content("#{Product.last.qty}")
+    expect(page).to have_content("sodavand") # Why downcase?
     expect(page.current_path).to eq product_path(2) 
   end
 
