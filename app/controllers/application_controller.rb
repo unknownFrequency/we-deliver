@@ -1,13 +1,20 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Helpers::NumberHelper
+
   protect_from_forgery with: :exception
   rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :current_cart
+  helper_method :current_cart, :isAdmin, :number_to_kr
 
   def current_cart
     @current_cart ||= ShoppingCart.new(token: cart_token)
   end
-  helper_method :current_cart
+
+
+  def number_to_kr(amount)
+    number_to_currency(amount,:unit=>'kr. ')
+  end
 
   protected
 

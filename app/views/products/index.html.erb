@@ -2,7 +2,7 @@
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 <% end %>
-<%= @current_cart.inspect %>
+<%= isAdmin.inspect %>
 
 <table class="responsive-table">
   <thead>
