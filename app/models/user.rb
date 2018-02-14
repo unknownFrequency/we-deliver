@@ -7,12 +7,11 @@ class User < ApplicationRecord
 
   validates :email, allow_blank: true, presence: false
   validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 } 
-  validates :password, presence: true, length: { minimum: 8 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
+  has_many :orders
   has_many :products
-
-
 
   def email_required?
     false

@@ -24,6 +24,7 @@ class ShoppingCart
   def add_item(product_id:, qty: 1)
     product = Product.find(product_id)
     order_item = order.items.find_or_initialize_by(product_id: product_id)
+    Rails.logger.debug order_item.inspect
     order_item.price = product.price
     order_item.qty = qty.to_i
 

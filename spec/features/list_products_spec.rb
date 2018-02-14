@@ -22,7 +22,7 @@ RSpec.feature "Listing products" do
   scenario "user adds product to cart" do
     login_as(@user)
     visit products_path
-    # click_button "add-Cola"
+
     click_button("add-#{@product1.name.downcase}")
     expect(page).to have_current_path("/cart")
     expect(page).to have_content("1 i kurv")

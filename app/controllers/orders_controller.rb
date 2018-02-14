@@ -12,8 +12,18 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_cart.order
+    # render plain: current_user.inspect
+    unless params[:email].nil?
+      if current_user.email.nil?
+        current_user.email =  params[:email]
+        unless current_user.save
+          Rails.logger.info("** ---- User did not get updates from order#create ---- **")
+          Rails.logger.info(current_user.inspect)
+        end
+      end
+    end
 
-    if @order.update_attributes(
+    if @order.update_attributes (
         order_params
     )
       session[:cart_token] = nil
