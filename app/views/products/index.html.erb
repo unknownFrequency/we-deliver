@@ -43,7 +43,7 @@
               <%= number_field_tag :qty, 1 %>
             </td>
             <td>
-              <button class="btn" type="submit" name="submit">
+              <button id=<%= "add-#{product.name.downcase}" %> class="btn" type="submit" name="submit">
                 <i class="material-icons">add</i>
               </button>
             <% end %>
