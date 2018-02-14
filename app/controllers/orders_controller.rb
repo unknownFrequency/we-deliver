@@ -13,14 +13,15 @@ class OrdersController < ApplicationController
   def create
     @order = current_cart.order
     # render plain: current_user.inspect
-    unless params[:email].nil?
-      if current_user.email.nil?
-        current_user.email =  params[:email]
-        unless current_user.save
-          Rails.logger.info("** ---- User did not get updates from order#create ---- **")
-          Rails.logger.info(current_user.inspect)
-        end
-      end
+    unless params[:email].nil? && current_user.email.nil?
+      current_user.email = params[:email]
+    end
+    unless params[:name].nil? && current_user.name.nil?
+      current_user.name = params[:name]
+    end
+    unless current_user.save(current_user)
+      Rails.logger.info("** ---- User did not get updates from order#create ---- **")
+      Rails.logger.info(current_user.inspect)
     end
 
     if @order.update_attributes (

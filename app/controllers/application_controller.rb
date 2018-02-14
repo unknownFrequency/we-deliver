@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
 
   def number_to_kr(amount)
-    number_to_currency(amount,:unit=>'kr. ')
+    number_to_currency(amount, strip_insignificant_zeros: true, :unit=>'kr. ')
   end
 
   protected

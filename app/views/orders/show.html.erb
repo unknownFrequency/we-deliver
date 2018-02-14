@@ -1,12 +1,16 @@
 <h2>Faktura</h2>
-<mark><%= current_user.name.nil? ? "" : current_user.name %></mark>
+<h3><%= user_signed_in? && !current_user.name.nil? ? "Navn: #{current_user.name}" : "" %></h3>
 <ul>
   <li>
-    <%= current_user.email.nil? ? "" : "Email: #{current_user.email}" %>
+    <%= user_signed_in? && !current_user.email.nil? ? "Email: #{current_user.email}" : ""  %>
   </li>
-  <li>Tlf. <%= current_user.phone %></li>
-  <li>Leverings addresse: <%= @order.delivery_address %>, <%= @order.zip %></li>
-  <li>I alt <%= number_to_currency @order.total, unit: "kr. " %></li>
+  <li>
+    <%= user_signed_in? && !current_user.phone.nil? ? "Telefon: #{current_user.phone}" : ""  %>
+  </li>
+  <li>
+    <%= @order.delivery_address %>, <%= @order.zip %>
+  </li>
+  <li>I alt <%= number_to_kr(@order.total) %></li>
   <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er lukket" %></li>
 </ul>
 

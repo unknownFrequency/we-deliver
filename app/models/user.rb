@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :authentication_keys => [:phone] 
 
   validates :email, allow_blank: true, presence: false
-  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 } 
+  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }, on: :create 
   validates :password, presence: true, length: { minimum: 8 }, on: :create
   validates :password_confirmation, presence: true, on: :create
 
