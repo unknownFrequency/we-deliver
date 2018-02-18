@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :products
+  has_many :rooms
+
+  after_create :create_chatroom
 
 
 
@@ -20,5 +23,12 @@ class User < ApplicationRecord
 
   def will_save_change_to_email?
     false
+  end
+
+  private
+
+  def create_chatroom
+    chatroom_name = self.phone
+    Room.create(name: chatroom_name, user_id: self.id)
   end
 end

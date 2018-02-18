@@ -28,7 +28,7 @@ class ShoppingCart
     order_item.qty = qty.to_i
 
     ActiveRecord::Base.transaction do
-      order_item.save
+      order_item.save!
       update_total!
     end
   end

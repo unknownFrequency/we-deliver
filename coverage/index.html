@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-02-13T22:59:51+01:00">2018-02-13T22:59:51+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-02-15T19:07:49+01:00">2018-02-15T19:07:49+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">95.76%</span></span>
+    (<span class="covered_percent"><span class="green">95.54%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.82
+         2.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>50</b> files in total.
-    <b>543</b> relevant lines. 
-    <span class="green"><b>520</b> lines covered</span> and
-    <span class="red"><b>23</b> lines missed </span>
+    <b>52</b> files in total.
+    <b>560</b> relevant lines. 
+    <span class="green"><b>535</b> lines covered</span> and
+    <span class="red"><b>25</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -161,6 +161,16 @@
       </tr>
       
       <tr>
+        <td class="strong"><a href="#21ae295cf82c2748f08ed8ccc78787191f5acbc4" class="src_link" title="app/models/room.rb">app/models/room.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>3</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#71c5aeecbcd050b09261af65ca0305ffb9234eeb" class="src_link" title="app/models/shopping_cart.rb">app/models/shopping_cart.rb</a></td>
         <td class="red strong">51.72 %</td>
         <td>53</td>
@@ -173,11 +183,11 @@
       <tr>
         <td class="strong"><a href="#22dfdb4db753ce23e41aef49cc7c0c1010d96e9e" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>24</td>
-        <td>12</td>
-        <td>12</td>
+        <td>34</td>
+        <td>18</td>
+        <td>18</td>
         <td>0</td>
-        <td>15.6</td>
+        <td>16.2</td>
       </tr>
       
       <tr>
@@ -392,11 +402,11 @@
       
       <tr>
         <td class="strong"><a href="#3f6514a54aa0ce5871e4488124675f686798ebdb" class="src_link" title="spec/features/signup_user_spec.rb">spec/features/signup_user_spec.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>27</td>
-        <td>19</td>
-        <td>19</td>
-        <td>0</td>
+        <td class="green strong">92.0 %</td>
+        <td>38</td>
+        <td>25</td>
+        <td>23</td>
+        <td>2</td>
         <td>1.0</td>
       </tr>
       
@@ -422,6 +432,16 @@
       
       <tr>
         <td class="strong"><a href="#e48aff246945416369f3ab1cbd03ed9d9e387a32" class="src_link" title="spec/models/category_spec.rb">spec/models/category_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>5</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#c16ee5d6b432929aad17b4c36e371b8c85eea65c" class="src_link" title="spec/models/room_spec.rb">spec/models/room_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>5</td>
         <td>3</td>
@@ -1987,6 +2007,43 @@
 </div>
 
       
+        <div class="source_table" id="21ae295cf82c2748f08ed8ccc78787191f5acbc4">
+  <div class="header">
+    <h3>app/models/room.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class Room &lt; ApplicationRecord</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  belongs_to :user</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="71c5aeecbcd050b09261af65ca0305ffb9234eeb">
   <div class="header">
     <h3>app/models/shopping_cart.rb</h3>
@@ -2329,8 +2386,8 @@
     <h3>app/models/user.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>18</b> relevant lines. 
+      <span class="green"><b>18</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2416,10 +2473,10 @@
           <code class="ruby">  has_many :products</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  has_many :rooms</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
@@ -2428,55 +2485,115 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  after_create :create_chatroom</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="18">
           
-          <code class="ruby">  def email_required?</code>
-        </li>
-      
-        <li class="covered" data-hits="59" data-linenumber="18">
-          <span class="hits">59</span>
           
-          <code class="ruby">    false</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
+        <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
-          <code class="ruby">  def will_save_change_to_email?</code>
+          <code class="ruby">  def email_required?</code>
         </li>
       
-        <li class="covered" data-hits="118" data-linenumber="22">
-          <span class="hits">118</span>
+        <li class="covered" data-hits="62" data-linenumber="21">
+          <span class="hits">62</span>
           
           <code class="ruby">    false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def will_save_change_to_email?</code>
+        </li>
+      
+        <li class="covered" data-hits="124" data-linenumber="25">
+          <span class="hits">124</span>
+          
+          <code class="ruby">    false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def create_chatroom</code>
+        </li>
+      
+        <li class="covered" data-hits="46" data-linenumber="31">
+          <span class="hits">46</span>
+          
+          <code class="ruby">    chatroom_name = self.phone</code>
+        </li>
+      
+        <li class="covered" data-hits="46" data-linenumber="32">
+          <span class="hits">46</span>
+          
+          <code class="ruby">    Room.create(name: chatroom_name, user_id: self.id)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
           
           
           <code class="ruby">end</code>
@@ -7521,11 +7638,11 @@
         <div class="source_table" id="3f6514a54aa0ce5871e4488124675f686798ebdb">
   <div class="header">
     <h3>spec/features/signup_user_spec.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">92.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>19</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>25</b> relevant lines. 
+      <span class="green"><b>23</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -7625,70 +7742,136 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">  scenario &quot;without valid credentials&quot; do</code>
+          <code class="ruby">  before do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="17">
+          <span class="hits">3</span>
           
-          <code class="ruby">    visit products_path </code>
+          <code class="ruby">    @user = User.create!(email: &quot;ab@a.a&quot;, phone: &quot;11112222&quot;, password: &quot;password&quot;, password_confirmation: &quot;password&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    click_link &quot;Opret konto&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    fill_in &quot;Telefon&quot;, with: &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    fill_in &quot;Email&quot;, with: &quot;&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    fill_in &quot;Password&quot;, with: &quot;123123&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="22">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    fill_in &quot;Password igen&quot;, with: &quot;123123&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    click_button &quot;Opret&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">    # expect(page).to have_content(&quot;Konto ikke oprettet&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  scenario &quot;room gets created after user signup&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    room = @user.room</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="22">
+          
+          
+          <code class="ruby">    room_name = @user.phone</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
+          
+          <code class="ruby">    expect(room.name).to eq(room_name)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  scenario &quot;without valid credentials&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit products_path </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    click_link &quot;Opret konto&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    fill_in &quot;Telefon&quot;, with: &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    fill_in &quot;Email&quot;, with: &quot;&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    fill_in &quot;Password&quot;, with: &quot;123123&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    fill_in &quot;Password igen&quot;, with: &quot;123123&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    click_button &quot;Opret&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">    # expect(page).to have_content(&quot;Konto ikke oprettet&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">end</code>
@@ -7827,6 +8010,55 @@
           <span class="hits">1</span>
           
           <code class="ruby">RSpec.describe Category, type: :model do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  pending &quot;add some examples to (or delete) #{__FILE__}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="c16ee5d6b432929aad17b4c36e371b8c85eea65c">
+  <div class="header">
+    <h3>spec/models/room_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>3</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;rails_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">RSpec.describe Room, type: :model do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">

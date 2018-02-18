@@ -13,6 +13,17 @@ RSpec.feature "Signup user" do
     expect(page).to have_content('Din konto blev oprettet')
   end
 
+  before do
+    @user = User.create!(email: "ab@a.a", phone: "11112222", password: "password", password_confirmation: "password")
+  end
+
+  scenario "room gets created after user signup" do
+    room = @user.room
+    room_name = @user.phone
+
+    expect(room.name).to eq(room_name)
+  end
+
   scenario "without valid credentials" do
     visit products_path 
     click_link "Opret konto"

@@ -611,15 +611,25 @@
         1,
         null,
         1,
+        1,
+        null,
+        1,
         null,
         null,
         null,
         1,
-        59,
+        62,
         null,
         null,
         1,
-        118,
+        124,
+        null,
+        null,
+        1,
+        null,
+        1,
+        46,
+        46,
         null,
         null
       ],
@@ -931,6 +941,17 @@
         null,
         null,
         1,
+        3,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
         1,
         1,
         1,
@@ -982,6 +1003,18 @@
         1,
         1,
         null,
+        1,
+        null
+      ],
+      "/home/unknowner/Sites/rails/we-deliver/spec/models/room_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/home/unknowner/Sites/rails/we-deliver/app/models/room.rb": [
+        1,
         1,
         null
       ],
@@ -1402,6 +1435,6 @@
         null
       ]
     },
-    "timestamp": 1518559191
+    "timestamp": 1518718069
   }
 }

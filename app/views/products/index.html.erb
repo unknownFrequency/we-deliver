@@ -3,19 +3,19 @@
   <%= link_to "Nyt Produkt", new_product_path, class: "btn" %>
 <% end %>
 
-<table class="responsive-table">
-  <thead>
-    <tr>
-      <td>Produkt</td>
-      <td>Producent</td>
-      <td>Pris</td>
-      <td>Beskrivelse</td>
-      <td>Kategori</td>
-      <td>Antal</td>
-      <td><span style="font-size: 2em">+</span></td>
-    </tr>
-  </thead>
-  <tbody>
+<%# <table class="responsive-table"> %>
+<%#   <thead> %>
+<%#     <tr> %>
+<%#       <td>Produkt</td> %>
+<%#       <td>Producent</td> %>
+<%#       <td>Pris</td> %>
+<%#       <td>Beskrivelse</td> %>
+<%#       <td>Kategori</td> %>
+<%#       <td>Antal</td> %>
+<%#       <td><span style="font-size: 2em">+</span></td> %>
+<%#     </tr> %>
+<%#   </thead> %>
+<%#   <tbody> %>
 
     <% if @products.empty? %>
       <div class="card blue-grey red darken-1">
@@ -25,32 +25,28 @@
       </div>
     <% else %>
       <% @products.each do |product| %>
-        <tr>
-          <td><%= link_to product.name, product_path(product) %></td>
-          <td><%= product.brand.name %></td>
-          <td><%= product.price %></td>
-          <td><%= truncate product.description, length: 300 %></td>
-          <td>
-            <% product.categories.each do |c| %>
-              <%= c.name %>
-            <% end %>
-          </td>
-          <td><%= product.qty %></td>
-          <%= form_tag order_items_path do %>
-            <td width="56px">
-              <%= hidden_field_tag :product_id, product.id %>
-              <%= hidden_field_tag :price, 1 %>
-              <%= number_field_tag :qty, 1 %>
-            </td>
-            <td>
-              <button class="btn" type="submit" name="submit">
-                <i class="material-icons">add</i>
-              </button>
-            <% end %>
-            </td>
-        </tr>
-      <% end %>
+        <%= link_to product.name, product_path(product) %>
+        <%= product.brand.name %></td>
+      Pris: <%= product.price %>
+    <%= truncate product.description, length: 300 %>
+    <% product.categories.each do |c| %>
+      <%= c.name %>
     <% end %>
-    <tbody>
-</table>
+    Antal: <%= product.qty %>
+  <%= form_tag order_items_path do |f| %>
+    <%= hidden_field_tag :product_id, product.id %>
+    <%= hidden_field_tag :price, 1 %>
+    <%= number_field_tag :qty, 1 %>
+    <%# <%= submit_tag, class: "btn waves-effect" %1> %>
+    <input class="btn waves-effect" name="commit" type="submit" value="Save changes" >
+          <i class="material-icons">add</i>
+    </input>
+    <%# <button class="btn waves-effect" type="submit" name="action" > %>
+      <%#   </button> %>
+    <%# <button class="btn waves-effect waves-light" type="submit" name="action">Submit %>
+      <%#   <i class="material-icons right">cloud</i> %>
+      <%# </button> %>
+  <% end %>
+<% end %>
+      <% end %>
 

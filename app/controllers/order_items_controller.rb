@@ -6,6 +6,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
+    # p params
     current_cart.add_item(
       product_id: params[:product_id],
       qty: params[:qty],
@@ -20,4 +21,10 @@ class OrderItemsController < ApplicationController
     current_cart.remove_item(id: params[:id])
     redirect_to cart_path
   end
+
+
+  private
+    def order_items_params
+      params.require(:order_items).permit(:product_id, :price, :qty)
+    end
 end
