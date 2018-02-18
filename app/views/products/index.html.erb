@@ -28,7 +28,7 @@
         <tr>
           <% @products.each do |product| %>
             <td>
-              <%= link_to "#{product.name.downcase}", product_path(product) %>
+              <%= link_to "#{product.name}", product_path(product) %>
             </td>
             <td>
               <%= product.brand.name %>

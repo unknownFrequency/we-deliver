@@ -39,7 +39,6 @@ RSpec.feature "Listing products" do
     expect(page).not_to have_css("#phone")
     expect(page).not_to have_link("Nyt Produkt")
 
-    page.inspect
     expect(page).to have_content(@product1.name)
     expect(page).to have_content(@product2.name)
     expect(page).to have_content(@product1.description)
