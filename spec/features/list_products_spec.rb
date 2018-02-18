@@ -23,8 +23,9 @@ RSpec.feature "Listing products" do
     login_as(@user)
     visit products_path
 
-    click_button("add-#{@product1.name.downcase}")
-    expect(page).to have_current_path("/cart")
+    find("#add-#{@product1.name.downcase}").click
+
+    expect(page).to have_current_path(cart_path)
     expect(page).to have_content("1 i kurv")
 
     visit products_path

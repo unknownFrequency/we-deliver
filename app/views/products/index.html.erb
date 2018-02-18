@@ -24,33 +24,36 @@
         </div>
       </div>
     <% else %>
-      <% @products.each do |product| %>
+      <tbody>
         <tr>
-          <td><%= link_to product.name, product_path(product) %></td>
-          <td><%= product.brand.name %></td>
-          <td><%= product.price %></td>
-          <td><%= truncate product.description, length: 300 %></td>
-          <td>
-            <% product.categories.each do |c| %>
-              <%= c.name %>
-            <% end %>
-          </td>
-          <td><%= product.qty %></td>
-          <%= form_tag order_items_path do %>
-            <td width="56px">
-              <%= hidden_field_tag :product_id, product.id %>
-              <%= hidden_field_tag :price, 1 %>
-              <%= number_field_tag :qty, 1 %>
+          <% @products.each do |product| %>
+            <td>
+              <%= link_to "#{product.name.downcase}", product_path(product) %>
             </td>
             <td>
-              <button id=<%= "add-#{product.name.downcase}" %> class="btn" type="submit" name="submit">
-                <i class="material-icons">add</i>
-              </button>
-            <% end %>
+              <%= product.brand.name %>
+            </td>
+            <td>
+              <%= product.price %>
+            </td>
+            <td>
+            <%= truncate product.description, length: 300 %>
+            </td>
+            <td>
+              <% product.categories.each do |c| %>
+                <%= c.name %>
+              <% end %>
+            <td>
+              <%= product.qty %>
+            </td>
+            <td>
+              <%= form_tag order_items_path do %>
+                  <%= hidden_field_tag :product_id, product.id %>
+                  <%= hidden_field_tag :price, 1 %>
+                  <%= number_field_tag :qty, 1 %>
+                  <%= submit_tag "Tilføj", class: "btn", id: "add-#{product.name.downcase}" %>
+              <% end %>
             </td>
         </tr>
       <% end %>
     <% end %>
-    <tbody>
-</table>
-

@@ -24,6 +24,7 @@ RSpec.feature "Create order" do
     expect(page).to have_current_path(checkout_path)
     @order = Order.last
     expect(@order.id).to eq(1)
+    expect(find_field('name').value).to eq @user.name
   end
 
   # TODO
@@ -38,7 +39,6 @@ RSpec.feature "Create order" do
     expect(page).to have_current_path(order_path(1))
     expect(page).to have_content("fanta@soda.dk")
     expect(page).to have_content(@user.name)
-    # expect(find_field('name').value).to eq @user.name
   end
 
   scenario "user fills in name with no email" do
