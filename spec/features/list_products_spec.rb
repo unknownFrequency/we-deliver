@@ -9,7 +9,7 @@ RSpec.feature "Listing products" do
     @brand = Brand.create(name: "test");
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
     @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
-    @product2 = Product.create(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
+    @product2 = Product.create!(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
   end
 
 
@@ -17,6 +17,21 @@ RSpec.feature "Listing products" do
     login_as(@admin)
     visit products_path
     expect(page).to have_link("Nyt Produkt")
+  end
+
+  scenario "user adds product to cart" do
+    login_as(@user)
+    visit products_path
+
+    find("#add-#{@product1.name.downcase}").click
+
+    expect(page).to have_current_path(cart_path)
+    expect(page).to have_content("1 i kurv")
+
+    visit products_path
+    click_button("add-#{@product2.name.downcase}")
+    expect(page).to have_content("2 i kurv")
+    expect(page).to have_current_path("/cart")
   end
 
   scenario "all products without user" do

@@ -10,7 +10,6 @@ class OrderItemsController < ApplicationController
     current_cart.add_item(
       product_id: params[:product_id],
       qty: params[:qty],
-			
     )
 
     redirect_to cart_path

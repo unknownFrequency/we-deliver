@@ -1,8 +1,32 @@
 <h2>Bekræft oplysninger</h2>
 
 <%= form_for @order, url: confirm_order_path do |f| %>
-  <%# <%= f.hidden_field :user_id, value: current_user.id %1> %>
+  <% if @order.errors.any? %>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li class="error" li><%= msg %></li>
+    <% end %>
+  <% end %>
+
   <%= f.hidden_field :status, value: "open" %>
+
+  <!-- Brugerens email til kvittering -->
+  <div class="row">
+      <%= fields_for :users do |user_f| %>
+        <div class="input-field col s6">
+          <%= user_f.email_field :email, class: "validate", name: "email", 
+            value: user_signed_in? && !current_user.email.nil? ? current_user.email : "" %>
+          <%= user_f.label "Send kvittering til email", class: "active" %>
+        </div>
+  </div>
+  <div class="row">
+        <div class="input-field col s6">
+          <%= user_f.text_field :name, class: "validate", name: "name", 
+            value: user_signed_in? && !current_user.name.nil? ? current_user.name : "" %>
+          <%= user_f.label "Navn", class: "active" %>
+        </div>
+      <% end %>
+  </div>
+
   <div class="row">
     <div class="input-field col s5">
       <%= f.text_field :delivery_address, class: "validate", value: @address %>
@@ -10,6 +34,7 @@
     </div>
   </div>
 
+  <!--  Field Post Nr. -->
   <div class="row">
     <div class="input-field col s5">
       <%= f.text_field :zip, class: "validate", value: @zip %>
@@ -17,13 +42,14 @@
     </div>
   </div>
 
+  <!-- Vælg Betaling -->
   <div class="row">
     <div class="input-field col s5">
       <select name="order[payment_type]" id="order_payment_type">
         <option disabled selected value class="dropdown-content">Vælg betaling</option> 
         <% Order::PAYMENT_TYPES.each do |key, payment| %>
           <option class="dropdown-content" value="<%= key %>">
-            <%= payment %>
+          <%= payment %>
           </option>
         <% end %>
       </select>
@@ -31,10 +57,12 @@
     </div>
   </div>
 
+  <!-- Total pris -->
   <div class="row">
     <div class="input-field col s5">
       I alt - <%= number_to_kr @order.total %>
     </div>
   </div>
+
   <%= f.submit "Bestil nu", class: "btn" %>
 <% end %>

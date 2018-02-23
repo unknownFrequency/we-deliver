@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
     elsif @product.errors.any?
       flash[:error] = "Produktet blev ikke oprettet"
       render :edit
-      # redirect_to new_product_path
     end
   end
 

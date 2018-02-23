@@ -24,6 +24,7 @@
         </div>
       </div>
     <% else %>
+<<<<<<< HEAD
       <% @products.each do |product| %>
         <%= link_to product.name, product_path(product) %>
         <%= product.brand.name %></td>
@@ -50,3 +51,38 @@
 <% end %>
       <% end %>
 
+=======
+      <tbody>
+        <tr>
+          <% @products.each do |product| %>
+            <td>
+              <%= link_to "#{product.name}", product_path(product) %>
+            </td>
+            <td>
+              <%= product.brand.name %>
+            </td>
+            <td>
+              <%= product.price %>
+            </td>
+            <td>
+            <%= truncate product.description, length: 300 %>
+            </td>
+            <td>
+              <% product.categories.each do |c| %>
+                <%= c.name %>
+              <% end %>
+            <td>
+              <%= product.qty %>
+            </td>
+            <td>
+              <%= form_tag order_items_path do %>
+                  <%= hidden_field_tag :product_id, product.id %>
+                  <%= hidden_field_tag :price, 1 %>
+                  <%= number_field_tag :qty, 1 %>
+                  <%= submit_tag "Tilføj", class: "btn", id: "add-#{product.name.downcase}" %>
+              <% end %>
+            </td>
+        </tr>
+      <% end %>
+    <% end %>
+>>>>>>> dfd8f3ab2abb143f53335f41905434aec60b6908

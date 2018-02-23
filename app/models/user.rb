@@ -6,16 +6,15 @@ class User < ApplicationRecord
   devise :authentication_keys => [:phone] 
 
   validates :email, allow_blank: true, presence: false
-  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 } 
-  validates :password, presence: true, length: { minimum: 8 }
-  validates :password_confirmation, presence: true
+  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }, on: :create 
+  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
+  has_many :orders
   has_many :products
   has_many :rooms
 
   after_create :create_chatroom
-
-
 
   def email_required?
     false
