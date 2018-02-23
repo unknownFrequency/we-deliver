@@ -12,7 +12,8 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :products
-  has_many :rooms
+  has_many :messages
+  has_one :room
 
   after_create :create_chatroom
 
@@ -27,7 +28,7 @@ class User < ApplicationRecord
   private
 
   def create_chatroom
-    chatroom_name = self.phone
+    chatroom_name = "#{self.phone}-#{self.name}"
     Room.create(name: chatroom_name, user_id: self.id)
   end
 end

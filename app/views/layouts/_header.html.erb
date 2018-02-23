@@ -1,10 +1,11 @@
+<%= session[:current_room] %>
  <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo center">WE<span style="margin-left:5px; font-size: 1.4em">DELIVER</span></a>
       <ul class="left hide-on-med-and-down">
         <li><%= link_to "Produkter", products_path %></li>
         <li><a href="#">Ordrer</a></li>
-        <li class="active"><a href="#">JavaScript</a></li>
+        <li class="active"><%= link_to "Skriv med os", room_path(1) %></li>
       </ul>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
