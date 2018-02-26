@@ -5,7 +5,21 @@
       <ul class="left hide-on-med-and-down">
         <li><%= link_to "Produkter", products_path %></li>
         <li><a href="#">Ordrer</a></li>
-        <li class="active"><%= link_to "Skriv med os", room_path(1) %></li>
+         <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if !current_user.admin %></li>
+                 
+         <% if user_signed_in? && current_user.admin && notifications %>
+           <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
+             <%=
+               if notifications.count == 1  
+                 link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id)
+               elsif notifications.count > 1  
+                 link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id)
+               end
+             %>
+           </li>
+         <% end %>
+         <%= notifications.inspect %>
+
       </ul>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
