@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @message.room = current_room
 
     @message.save
-    redirect_to room_path(current_room)
+    redirect_back fallback_location: root_path
   end
 
 

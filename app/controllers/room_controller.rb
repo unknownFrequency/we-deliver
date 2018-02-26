@@ -13,7 +13,8 @@ class RoomController < ApplicationController
   def show
     set_current_room
     @message = Message.new
-    @messages = current_room.messages if current_room
+    # @messages = current_room.messages if current_room
+    @messages = @room.messages if @room && @room.messages
     @admin = User.where(admin: 1).first
     
   end
