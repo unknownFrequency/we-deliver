@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Sending a chat message" do
   before do
     @user = User.create!(name: "RullePops1", email: "ab1@a.a", phone: "11112223", password: "password", password_confirmation: "password")
-    @admin = User.create!(admin: 1, name: "RullePops2", email: "ab2@a.a", phone: "11112224", password: "password", password_confirmation: "password")
+    @admin = User.create!(admin: true, name: "RullePops2", email: "ab2@a.a", phone: "11112224", password: "password", password_confirmation: "password")
     # @user3 = User.create!(name: "RullePops3", phone: "11112225", password: "password", password_confirmation: "password")
 
     @roomName = "#{@user.phone}-#{@user.name}"
@@ -11,6 +11,15 @@ RSpec.feature "Sending a chat message" do
     p @room
 
     login_as @user
+  end
+
+  scenario "heading link shows an unread message" do
+  end
+
+  scenario "heading link shows 2 unread messages" do
+  end
+
+  scenario "heading contains no unread messages" do
   end
 
   scenario "admin shows in chatroom window" do
@@ -24,10 +33,14 @@ RSpec.feature "Sending a chat message" do
 
     expect(page).to have_content "Hej"
     expect(page).to have_content(@user.name)
+    expect(Message.last.read).to eq false
 
     login_as(@admin)
+
+    # expect(page).to have_content("1 ulæst besked") # TODO WHY?
     visit room_path(@room)
 
+    expect(Message.last.read).to eq true
 
     fill_in "message-field", with: "Hvad kan vi gøre for dig?"
     click_button "Send"

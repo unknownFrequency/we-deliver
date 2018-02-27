@@ -1,24 +1,26 @@
 <div>
-	<div id="chat-window">
-		<header><%= current_room ? current_room.name : Room.find(params[:id]).name %></header>
+			<div id="chat-window">
+						<header><%= current_room ? current_room.name : Room.find(params[:id]).name %></header>
 
-		<div id="chat-box" data-channel="rooms" data-room-id=<%= params[:id] %> >
-      <% if @messages %>
-        <% @messages.each do |message| %>
-          <%= render partial: "shared/message", locals: { message: message } %>
-        <% end %>
-      <% end %>
-		</div>
+						<div id="messages-box">
+									<div id="chat-box" data-channel="rooms" data-room-id=<%= params[:id] %> >
+												<% if @messages %>
+															<% @messages.each do |message| %>
+																		<%= render partial: "shared/message", locals: { message: message } %>
+															<% end %>
+												<% end %>
+									</div>
 
-		<div class="row">
-			<%= form_for @message, class: "col s12" do |f| %>
-				<div class="row">
-					<div class="input-field col s6">
-						<%= f.text_field :body, id: "message-field", class: "validatea" %>
-						<%= f.submit "Send", class: "btn", id: "message-btn" %>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
+									<div class="row">
+												<%= form_for @message, class: "col s12" do |f| %>
+															<div class="row">
+																		<div class="input-field col s6">
+																					<%= f.text_field :body, id: "message-field", class: "validatea" %>
+																					<%= f.submit "Send", class: "btn", id: "message-btn" %>
+																		</div>
+															</div>
+												<% end %>
+									</div>
+						</div>
+			</div>
 </div>

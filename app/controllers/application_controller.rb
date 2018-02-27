@@ -8,12 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart, :isAdmin, :number_to_kr, :notifications
 
   def notifications
-    # notifications = []
-    # Message.where("read = ?", false).find_each do |msg|
-    #   notifications.push msg
-    # end
-    notifications = Message.where(read: :false)
-    # return notifications
+    notifications = Message.where(read: :false) if !Message.where(read: :false).first.nil?
   end
 
 

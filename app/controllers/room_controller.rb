@@ -13,17 +13,23 @@ class RoomController < ApplicationController
   def show
     set_current_room
     @message = Message.new
-    # @messages = current_room.messages if current_room
     @messages = @room.messages if @room && @room.messages
-    @admin = User.where(admin: 1).first
-    
+
+    if current_user.admin && notifications
+      notifications.each do |unreadMsg|
+        if unreadMsg.room_id == current_room.id
+          unreadMsg.read = true
+          unreadMsg.save!
+        end
+      end
+    end
   end
 
   private
 
   def set_current_room
-    if params[:roomId]
-      @room = Room.find_by(id: params[:roomId])
+    if params[:id]
+      @room = Room.find(params[:id])
     else
       @room = current_user.room
     end
