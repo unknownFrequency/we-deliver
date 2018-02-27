@@ -12,10 +12,10 @@
 									</div>
 
 									<div class="row">
-												<%= form_for @message, class: "col s12" do |f| %>
+												<%= form_for @message, remote: true, class: "col s12" do |f| %>
 															<div class="row">
 																		<div class="input-field col s6">
-																					<%= f.text_field :body, id: "message-field", class: "validatea" %>
+																					<%= f.text_field :body, id: "message-field", class: "validate" %>
 																					<%= f.submit "Send", class: "btn", id: "message-btn" %>
 																		</div>
 															</div>

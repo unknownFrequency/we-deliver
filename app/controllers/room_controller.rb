@@ -15,7 +15,7 @@ class RoomController < ApplicationController
     @message = Message.new
     @messages = @room.messages if @room && @room.messages
 
-    if current_user.admin && notifications
+    if user_signed_in? && current_user.admin && notifications
       notifications.each do |unreadMsg|
         if unreadMsg.room_id == current_room.id
           unreadMsg.read = true
