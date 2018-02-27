@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/unknowner/Sites/rails/we-deliver/app/models/user.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/user.rb": [
         1,
         null,
         null,
@@ -22,45 +22,72 @@
         1,
         null,
         1,
-        66,
+        84,
         null,
         null,
         1,
-        132,
+        168,
         null,
         null,
         1,
         null,
         1,
-        43,
-        43,
+        59,
+        59,
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/helpers/messages_helper.rb": [
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/helpers/product_helper.rb": [
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/room.rb": [
-        1,
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/room_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/helpers/messages_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/helpers/product_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/brand.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/categories_product.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/category.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/message.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/room.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/room_controller.rb": [
         1,
         null,
         1,
@@ -99,7 +126,7 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/application_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -110,10 +137,20 @@
         1,
         null,
         1,
-        151,
-        136,
         null,
-        15,
+        null,
+        null,
+        null,
+        72,
+        null,
+        null,
+        null,
+        null,
+        1,
+        161,
+        140,
+        null,
+        21,
         null,
         null,
         null,
@@ -130,7 +167,7 @@
         null,
         null,
         1,
-        9,
+        11,
         null,
         null,
         1,
@@ -149,29 +186,30 @@
         1,
         null,
         1,
-        78,
+        86,
         null,
-        78,
-        78,
+        86,
+        86,
         null,
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/shopping_cart.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/shopping_cart.rb": [
         1,
         null,
         1,
         null,
         1,
-        78,
-        78,
+        86,
+        86,
         null,
         null,
         1,
         null,
-        88,
-        88,
-        22,
+        90,
+        null,
+        24,
+        90,
         null,
         null,
         0,
@@ -180,7 +218,6 @@
         null,
         null,
         null,
-        null,
         1,
         5,
         5,
@@ -201,7 +238,7 @@
         null,
         null,
         1,
-        48,
+        50,
         null,
         null,
         1,
@@ -212,13 +249,7 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/message.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/order.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/order.rb": [
         1,
         1,
         1,
@@ -230,13 +261,13 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/order_item.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/order_item.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/messages_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/messages_controller.rb": [
         1,
         1,
         null,
@@ -256,26 +287,14 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/brand.rb": [
-        1,
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/category.rb": [
-        1,
-        1,
-        null,
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/product.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/models/product.rb": [
         1,
         1,
         1,
         1,
         1,
         null,
-        107,
+        119,
         null,
         1,
         1,
@@ -284,16 +303,7 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/models/categories_product.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/products_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/products_controller.rb": [
         1,
         1,
         1,
@@ -304,8 +314,8 @@
         null,
         null,
         1,
-        2,
-        2,
+        3,
+        3,
         null,
         null,
         1,
@@ -362,11 +372,11 @@
         null,
         null,
         1,
-        9,
+        10,
         null,
-        9,
-        9,
-        7,
+        10,
+        10,
+        8,
         null,
         null,
         null,
@@ -382,8 +392,8 @@
         null,
         1,
         1,
-        2,
-        2,
+        3,
+        3,
         null,
         null,
         1,
@@ -393,12 +403,12 @@
         null,
         null,
         1,
-        14,
+        17,
         null,
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/order_items_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/order_items_controller.rb": [
         1,
         1,
         null,
@@ -429,7 +439,7 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/orders_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/orders_controller.rb": [
         1,
         null,
         1,
@@ -479,25 +489,17 @@
         null,
         null
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/channels/application_cable/channel.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/channels/application_cable/connection.rb": [
-        0,
-        0,
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/jobs/application_job.rb": [
         0,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/confirmations_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/omniauth_callbacks_controller.rb": [
         null,
         null,
         0,
@@ -529,39 +531,7 @@
         null,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/unlocks_controller.rb": [
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0
-      ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/passwords_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/passwords_controller.rb": [
         null,
         null,
         0,
@@ -597,7 +567,36 @@
         null,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/omniauth_callbacks_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/sessions_controller.rb": [
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/unlocks_controller.rb": [
         null,
         null,
         0,
@@ -629,7 +628,39 @@
         null,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/registrations_controller.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/confirmations_controller.rb": [
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0
+      ],
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/controllers/users/registrations_controller.rb": [
         null,
         null,
         0,
@@ -695,40 +726,19 @@
         null,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/controllers/users/sessions_controller.rb": [
-        null,
-        null,
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/channels/application_cable/connection.rb": [
         0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        0,
+        0,
         0
       ],
-      "/home/unknowner/Sites/rails/we-deliver/app/jobs/application_job.rb": [
+      "/Users/rubenthuesen/Sites/rails/we-deliver/app/channels/application_cable/channel.rb": [
+        0,
+        0,
         0,
         0
       ]
     },
-    "timestamp": 1519402055
+    "timestamp": 1519725678
   }
 }

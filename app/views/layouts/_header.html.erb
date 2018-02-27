@@ -1,11 +1,11 @@
-<%= session[:current_room] %>
  <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo center">WE<span style="margin-left:5px; font-size: 1.4em">DELIVER</span></a>
+
       <ul class="left hide-on-med-and-down">
         <li><%= link_to "Produkter", products_path %></li>
         <li><a href="#">Ordrer</a></li>
-         <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if !current_user.admin %></li>
+         <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if user_signed_in? && !current_user.admin %></li>
                  
          <% if user_signed_in? && current_user.admin && notifications %>
            <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
@@ -14,13 +14,14 @@
                  link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id)
                elsif notifications.count > 1  
                  link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id)
+               else
+                 link_to "Beskeder", rooms_path()
                end
              %>
            </li>
          <% end %>
-         <%= notifications.inspect %>
-
       </ul>
+
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
           <li><%= link_to "#{current_cart.items_count} i kurv", cart_path %></li>

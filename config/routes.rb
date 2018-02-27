@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get "/orders/:id", to: "orders#show", as: :order
 
   get "/room/:id", to: "room#show", as: :room
+  get "/rooms", to: "room#index", as: :rooms
+
   resources :messages, only: [:create]
 
 end
