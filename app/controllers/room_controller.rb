@@ -1,5 +1,10 @@
 class RoomController < ApplicationController
 
+  def notifications
+    @room_id = params[:id]
+    Rails.logger.debug "--------------------------------------------------------------------------------------------------------------- #{@room_id} ------------------------------------------------------------------------------------"
+  end
+
   def index
 
   end
@@ -15,13 +20,20 @@ class RoomController < ApplicationController
     @message = Message.new
     @messages = @room.messages if @room && @room.messages
 
-    if user_signed_in? && current_user.admin && notifications
-      notifications.each do |unreadMsg|
-        if unreadMsg.room_id == current_room.id
-          unreadMsg.read = true
-          unreadMsg.save!
-        end
+    if user_signed_in? && current_user.admin && !notifications.nil? 
+      if notifications 
+        @notifications = Message.where(read: :false)
       end
+
+        # notifications.each do |unreadMsg|
+        #   if unreadMsg.room_id == current_room.id
+        #     unreadMsg.read = true
+        #     unreadMsg.save!
+        #     redirect_back fallback_location: root_path
+        #   end
+        # end
+      # if notifications.kind_of(Array)
+      # end
     end
   end
 

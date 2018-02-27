@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
+  # post "/notifications/:id", to: "room#notifications"
+
 
   mount ActionCable.server => "/cable"
 

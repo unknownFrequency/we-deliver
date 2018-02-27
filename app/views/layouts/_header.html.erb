@@ -1,37 +1,42 @@
- <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">WE<span style="margin-left:5px; font-size: 1.4em">DELIVER</span></a>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo center">WE<span style="margin-left:5px; font-size: 1.4em">DELIVER</span></a>
 
-      <ul class="left hide-on-med-and-down">
-        <li><%= link_to "Produkter", products_path %></li>
-        <li><a href="#">Ordrer</a></li>
-         <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if user_signed_in? && !current_user.admin %></li>
-         <% if user_signed_in? && current_user.admin && notifications %>
-           <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
-             <%=
-               if notifications.count == 1  
-                 link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id)
-               elsif notifications.count > 1  
-                 link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id)
-               end
-            %>
-           </li>
-         <% else %>
-           <%= link_to "Beskeder", rooms_path() %>
-        <% end %>
-      </ul>
+    <ul class="left hide-on-med-and-down">
+      <li><%= link_to "Produkter", products_path %></li>
+      <li><a href="#">Ordrer</a></li>
+      <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if user_signed_in? && !current_user.admin %></li>
 
-      <ul class="right hide-on-med-and-down">
-        <% if user_signed_in? %>
-          <li><%= link_to "#{current_cart.items_count} i kurv", cart_path %></li>
-          <li id="phone" style="color: #666; margin-right: 2em;">Tlf. (<%=  current_user.phone %>)</li>
-          <li><div class="divider"></div></li>
-          <li style="margin-right: 2em;"><%= link_to "Log ud", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Opret konto", new_user_registration_path %></li>
-          <li><div class="divider"></div></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+      <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
+        <li><%= link_to "Beskeder", rooms_path(), id: "notification-bar" %> </li>
+        <li><%= notifications ? link_to("Ulæste Beskeder!", rooms_path(), id: "notification-bar") : link_to("Ingen nye beskeder!", rooms_path(), id: "notification-bar") %></li>
+        <%# if user_signed_in? && current_user.admin && notifications %>
+        <% if notifications %>
+          <%=
+             #link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id), id: "notification-bar"
+            #if notifications.count == 1  
+             # link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id), id: "notification-bar"
+            #elsif notifications.count > 1  
+            #  link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id), id: "notification-bar"
+           # end
+          %>
+      <% else %>
+        <%# link_to "Beskeder", rooms_path(), id: "notification-bar" %>
+      <% end %>
+      </li>
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <li><%= link_to "#{current_cart.items_count} i kurv", cart_path %></li>
+        <li id="phone" style="color: #666; margin-right: 2em;">Tlf. (<%=  current_user.phone %>)</li>
+        <li><div class="divider"></div></li>
+        <li style="margin-right: 2em;"><%= link_to "Log ud", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Opret konto", new_user_registration_path %></li>
+        <li><div class="divider"></div></li>
+        <li><%= link_to "Login", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
