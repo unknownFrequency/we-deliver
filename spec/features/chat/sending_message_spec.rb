@@ -8,7 +8,6 @@ RSpec.feature "Sending a chat message" do
 
     @roomName = "#{@user.phone}-#{@user.name}"
     @room = Room.create!(name: @roomName, user_id: @user.id)
-    p @room
 
     login_as @user
   end
