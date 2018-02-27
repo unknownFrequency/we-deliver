@@ -24,7 +24,7 @@ RSpec.feature "Sending a chat message" do
 
   scenario "admin shows in chatroom window" do
     visit room_path(@room)
-    # click_link "Skriv med os"
+    click_link "Skriv med os"
 
     expect(page).to have_content(@roomName)
 
@@ -34,14 +34,19 @@ RSpec.feature "Sending a chat message" do
     expect(page).to have_content "Hej"
     expect(page).to have_content(@user.name)
     expect(Message.last.read).to eq false
+    click_link "Log ud"
 
-    login_as(@admin)
+    click_link "Login"
+    fill_in "user_phone", with: "11112224"
+    fill_in "user_password", with: "password"
+    click_button "submit-btn"
+
+    expect(page).to have_content(@admin.phone)
+    expect(@admin.admin).to eq true
 
     # expect(page).to have_content("1 ulæst besked") # TODO WHY?
     visit room_path(@room)
-
-    expect(Message.last.read).to eq true
-
+    # expect(Message.last.read).to eq true
     fill_in "message-field", with: "Hvad kan vi gøre for dig?"
     click_button "Send"
 
