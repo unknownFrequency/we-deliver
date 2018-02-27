@@ -14,7 +14,7 @@
                elsif notifications.count > 1  
                  link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id)
                end
-          %>
+            %>
            </li>
          <% else %>
            <%= link_to "Beskeder", rooms_path() %>
