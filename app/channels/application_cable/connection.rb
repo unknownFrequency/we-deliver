@@ -3,7 +3,7 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      self_current_user = find_current_user
+      self.current_user = find_verified_user
     end
 
     def disconnect
@@ -13,11 +13,21 @@ module ApplicationCable
     protected
 
     def find_current_user
-      if current_user = User.find_by(id: cookies.signed["user.id"])
-        current_user
+      # if user_signed_in? 
+      #   current_user
+      # else
+      #   reject_unauthorized_connection
+      # end
+    end
+
+    def find_verified_user # this checks whether a user is authenticated with devise
+      verified_user = env['warden'].user
+      if verified_user
+        verified_user
       else
         reject_unauthorized_connection
       end
     end
+
   end
 end
