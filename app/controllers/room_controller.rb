@@ -15,7 +15,8 @@ class RoomController < ApplicationController
       @message = Message.new
       @messages = @room.messages if @room && @room.messages
     else
-      redirect_to room_path(Room.where(user_id: current_user.id).first)
+      room = Room.where(user_id: current_user.id).first
+      redirect_to room_path(room)
     end
 
       # if user_signed_in? && current_user.admin && !notifications.nil? 
