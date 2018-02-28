@@ -1,12 +1,6 @@
 class RoomController < ApplicationController
-
-  def notifications
-    @room_id = params[:id]
-    Rails.logger.debug "--------------------------------------------------------------------------------------------------------------- #{@room_id} ------------------------------------------------------------------------------------"
-  end
-
   def index
-
+    @rooms = Room.all
   end
 
   def new

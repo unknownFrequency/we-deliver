@@ -1,0 +1,17 @@
+<h1>Samtaler</h1>
+
+<table>
+	<thead>
+		<th>Navn</th>
+		<th colspan="3"></th>
+	</thead>
+
+	<tbody>
+			<% @rooms.each do |room| %>
+				<tr>
+					<td><%= link_to room.name, room_path(room) %></td>
+					<td>Status</td>
+				</tr>
+			<% end %>
+	</tbody>
+</table>
