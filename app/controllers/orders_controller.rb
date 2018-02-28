@@ -24,11 +24,11 @@ class OrdersController < ApplicationController
       Rails.logger.info(current_user.inspect)
     end
 
-    if @order.update_attributes (
-        order_params
-    )
+    if @order.update_attributes(order_params)
       session[:cart_token] = nil
+      updateProductQty @order
       # render plain: @order.inspect
+
       redirect_to order_path(@order)
     else
       render :new
@@ -37,6 +37,14 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def updateProductQty(order)
+    order.items.each do |order_item|
+      product = Product.find(order_item.product_id)
+      product.qty -= order_item.qty
+      product.save!
+    end
   end
 
   private
