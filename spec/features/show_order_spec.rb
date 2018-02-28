@@ -4,10 +4,11 @@ Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Create order" do
   before do
-    @user = User.create(name: "Ruben T", address: "her 12", zip: "7741", phone: "20131262", password: "password", password_confirmation: "password")
-    @user2 = User.create(email: "r@r.dk", address: "her 12", zip: "7741", phone: "20161262", password: "password", password_confirmation: "password")
+    @user = User.create(name: "Ruben T", address: "her 12", zip: "7741", phone: "20131262", password: "password", password_confirmation: "password", name: "xxx")
+    @user2 = User.create(email: "r@r.dk", address: "her 12", zip: "7741", phone: "20161262", password: "password", password_confirmation: "password", name: "xxx")
+    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
+
     @brand = Brand.create(name: "Coca-Cola Company");
-    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
     @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
     @product2 = Product.create!(name: "Fanta", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
   end

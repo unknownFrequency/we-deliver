@@ -4,6 +4,7 @@ RSpec.feature "Signup user" do
   scenario "with valid credentials" do
     visit products_path 
     click_link "Opret konto"
+    fill_in "Navn", with: "xxx"
     fill_in "Telefon", with: "20131262"
     fill_in "Email", with: "rt@hshop.dk"
     fill_in "Password", with: "password"

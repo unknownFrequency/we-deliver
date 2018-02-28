@@ -11,12 +11,16 @@ class RoomController < ApplicationController
 
   def show
     set_current_room
-    if @room.user_id == current_user.id || current_user.admin
+    if current_user && (@room.user_id == current_user.id || current_user.admin)
       @message = Message.new
       @messages = @room.messages if @room && @room.messages
     else
-      room = Room.where(user_id: current_user.id).first
-      redirect_to room_path(room)
+      if current_user
+        room = Room.where(user_id: current_user.id).first
+        redirect_to room_path(room)
+      else
+        redirect_to root_path
+      end
     end
 
       # if user_signed_in? && current_user.admin && !notifications.nil? 
