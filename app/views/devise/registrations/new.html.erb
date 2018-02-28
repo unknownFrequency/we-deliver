@@ -7,9 +7,16 @@
   <%= devise_error_messages! %>
 
   <div class="row field">
+    <%= f.label :name, "Navn" %><br />
+    <span class="required">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </span>
+  </div>
+
+  <div class="row field">
     <%= f.label :phone, "Telefon" %><br />
     <span class="required">
-      <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+      <%= f.text_field :phone, autocomplete: "phone" %>
     </span>
   </div>
 

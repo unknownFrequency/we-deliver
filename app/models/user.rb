@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :authentication_keys => [:phone] 
 
+  validates :name, presence: true
   validates :email, allow_blank: true, presence: false
   validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }, on: :create 
   validates :password, presence: true, length: { minimum: 8 }, on: :create

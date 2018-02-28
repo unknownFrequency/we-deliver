@@ -11,24 +11,28 @@ class RoomController < ApplicationController
 
   def show
     set_current_room
-    @message = Message.new
-    @messages = @room.messages if @room && @room.messages
-
-    if user_signed_in? && current_user.admin && !notifications.nil? 
-      if notifications 
-        @notifications = Message.where(read: :false)
-      end
-
-        # notifications.each do |unreadMsg|
-        #   if unreadMsg.room_id == current_room.id
-        #     unreadMsg.read = true
-        #     unreadMsg.save!
-        #     redirect_back fallback_location: root_path
-        #   end
-        # end
-      # if notifications.kind_of(Array)
-      # end
+    if @room.user_id == current_user.id || current_user.admin
+      @message = Message.new
+      @messages = @room.messages if @room && @room.messages
+    else
+      redirect_to room_path(Room.where(user_id: current_user.id).first)
     end
+
+      # if user_signed_in? && current_user.admin && !notifications.nil? 
+      #   if notifications 
+      #     @notifications = Message.where(read: :false)
+      #   end
+
+          # notifications.each do |unreadMsg|
+          #   if unreadMsg.room_id == current_room.id
+          #     unreadMsg.read = true
+          #     unreadMsg.save!
+          #     redirect_back fallback_location: root_path
+          #   end
+          # end$
+        # if notifications.kind_of(Array)
+        # end
+      # end
   end
 
   private
