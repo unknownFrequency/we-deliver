@@ -65,14 +65,14 @@
           <% end %>
         </td>
         <td><%= product.qty %></td>
+      </tr>
+  </tbody>
+</table>
         <%= form_tag order_items_path do %>
           <%= hidden_field_tag :product_id, product.id %>
           <%= hidden_field_tag :price, 1 %>
-          <td><%= number_field_tag :qty, 1 %>
-          <%= submit_tag "Tilføj", class: "btn", id: "add-#{product.name.downcase}" %></td>
+          <%= number_field_tag :qty, 1 %>
+          <%= submit_tag "Tilføj", id: "add-#{product.name.downcase}" %>
         <% end %>
-      </tr>
     <% end %>
-  </tbody>
-<% end %>
-</table>
+  <% end %>
