@@ -5,10 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :products do
-    resources :categories
-    resources :brands
-  end
+  resources :categories
+  resources :products 
+  resources :brands
 
   get "/cart", to: "order_items#index"
   resources :order_items, path: "/cart/items"

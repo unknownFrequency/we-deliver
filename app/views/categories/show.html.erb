@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @category.name %></h1>
+<table>
+  <tr>
+    <% @category.products.each do |product| %>
+      <%= link_to product.name, product_path(product) %>
+    <% end %>
+  </tr>
+</table>
+
+<br />
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
