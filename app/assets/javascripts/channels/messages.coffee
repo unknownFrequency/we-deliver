@@ -8,18 +8,24 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
-
     roomId = $("#chat-box").data("room-id")
-#   posts = $(".message-row").length
-#   if posts > 50
-#     $(".message-row").first().remove()
-
+    activeRoom = $("[data-behavior='messages'][data-room-id='#{roomId}']")
+    
     $("#chat-box").append(data)
     $("#message-field").val("")
+
+    if activeRoom.length > 0
+      $("[data-behavior='room-link'][data-room-id='#{roomId}']").css("font-size", "200px")
 
   checkIn: (roomId) ->
     if roomId
       @perform "checkIn", room_id: roomId
     else
       @perform "checkOut"
+
+
+
+
+#//   posts = $(".message-row").length
+#//   if posts > 50
+#//     $(".message-row").first().remove()

@@ -4,12 +4,30 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :notifications
   before_action :current_cart
   helper_method :current_cart, :isAdmin, :number_to_kr, :notifications
 
   def notifications
-    Message.where(read: :false) if !Message.where(read: :false).first.nil?
+    # Message.where(read: :false) if !Message.where(read: :false).first.nil?
+    @unreadMessages = []
+    rooms = Room.all
+    rooms.each do |room|
+      messages = room.messages if room && room.messages
+
+      unless messages.empty?
+        messages.each do |message|
+          if !message.read
+            @unreadMessages.push message
+          end
+        end
+      end
+    end
+
+    return @unreadMessages
   end
+
+
 
 
   def current_cart

@@ -10,19 +10,7 @@
       <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
         <li><%= link_to "Beskeder", rooms_path(), id: "notification-bar" %> </li>
         <li><%= notifications ? link_to("Ulæste Beskeder!", rooms_path(), id: "notification-bar") : link_to("Ingen nye beskeder!", rooms_path(), id: "notification-bar") %></li>
-        <%# if user_signed_in? && current_user.admin && notifications %>
-        <% if notifications %>
-          <%=
-             #link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id), id: "notification-bar"
-            #if notifications.count == 1  
-             # link_to "#{notifications.count} ulæst besked", room_path(notifications.first.room_id), id: "notification-bar"
-            #elsif notifications.count > 1  
-            #  link_to "#{notifications.count} ulæste beskeder", room_path(notifications.first.room_id), id: "notification-bar"
-           # end
-          %>
-      <% else %>
-        <%# link_to "Beskeder", rooms_path(), id: "notification-bar" %>
-      <% end %>
+        <li><%= link_to Room.find(1).name, room_path(1), data: {behavior: "room-link", room_id: 1}  %></li>
       </li>
     </ul>
 
@@ -38,6 +26,11 @@
         <li><div class="divider"></div></li>
         <li><%= link_to "Login", new_user_session_path %></li>
       <% end %>
+    </ul>
+  </div>
+  <div class="nav-wrapper">
+    <ul>
+      <li style="color:black"><%= link_to "Ulæste beskeder: #{@unreadMessages.count}" %></li>
     </ul>
   </div>
 </nav>
