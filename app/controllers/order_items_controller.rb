@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
       qty: params[:qty],
     )
 
-    # redirect_to cart_path
+    redirect_back fallback_location: products_path
   end
 
 
