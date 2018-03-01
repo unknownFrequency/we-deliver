@@ -6,7 +6,7 @@ RSpec.feature "Listing products" do
     @user = User.create!(name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
 
-    @brand = Brand.create(name: "test");
+    @brand = Brand.create!(name: "test");
     @product1 = Product.create!(stock_item: true, name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user_id: @user.id)
     @product2 = Product.create!(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user_id: @user.id)
   end
@@ -29,9 +29,10 @@ RSpec.feature "Listing products" do
     expect(@product1).to be_a_kind_of(Product)
     # click_button("#add-#{@product1.name.downcase}")
     # find("#add-#{@product1.name.downcase}").click
-    click_on @product1.name
+    # click_on @product1.name
 
-    expect(page).to have_current_path(cart_path)
+    expect(page).to have_content("Produkter")
+    expect(page).to have_current_path(products_path)
     expect(page).to have_content("1 i kurv")
 
     visit products_path

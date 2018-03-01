@@ -16,7 +16,13 @@
 
   <hr />
   <li>I alt <%= number_to_kr(@order.total) %></li>
-  <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er lukket" %></li>
+  <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er afsluttet" %></li>
+  <% if isAdmin? %>
+    <%= form_tag complete_order_path, method: :patch do  %>
+      <%= hidden_field_tag :status, value: "complete" %>
+      <%= submit_tag "Afslut ordren", class: "btn" %>
+    <% end %>
+  <% end %>
 </ul>
 
 <br />

@@ -47,6 +47,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def complete_order 
+    order = Order.find(params[:id])
+    order.status = "complete"
+    order.save!
+    redirect_to order_path(order)
+  end
+
   private
 
   def order_params

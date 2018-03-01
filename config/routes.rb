@@ -21,8 +21,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  # post "/notifications/:id", to: "room#notifications"
-
+  patch "/orders/complete_order/:id", to: "orders#complete_order", as: :complete_order
 
   mount ActionCable.server => "/cable"
 

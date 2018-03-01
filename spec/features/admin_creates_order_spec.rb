@@ -13,6 +13,33 @@ RSpec.feature "Creating product" do
     @categoriesProduct = CategoriesProduct.create!(product_id: @product1.id, category_id: @category.id)
   end
 
+  scenario "Admin marks order as completed" do
+    login_as(@admin)
+    visit cart_path
+
+    fill_in "Produkt", with: "Atombombe"
+    fill_in "Antal", with: "1"
+    fill_in "Pris", with: "107"
+    click_button "Tilføj"
+
+    expect(page.current_path).to eq cart_path
+    expect(page).to have_content("Atombombe")
+    expect(page).to have_content("1")
+    expect(page).to have_content("kr. 107")
+
+    click_link "Gem ordre"
+
+    expect(page.current_path).to eq checkout_path
+
+    click_button("Bestil nu")
+    expect(page.current_path).to eq order_path(1)
+
+    click_link("Afslut ordre")
+    visit order_path(1)
+    expect(page).to have_content "Ordren er afsluttet"
+  
+  end
+
   scenario "Admin creates order" do
     expect(@product1).to be_a_kind_of(Product)
     expect(@category).to be_a_kind_of(Category)
