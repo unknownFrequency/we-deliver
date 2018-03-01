@@ -16,40 +16,6 @@
     </tr>
   </thead>
 
-  <% if @products.empty? %>
-    <div class="card blue-grey red darken-1">
-      <div class="card-content white-text">
-        <span class="card-title error">Ingen produkter</span>
-      </div>
-    </div>
-  <% else %>
-    <%# <tbody> %>
-      <%#   <tr> %>
-        <%#     <% @products.each do |product| %1> %>
-        <%#       <td><%= link_to product.name, product_path(product) %1></td> %>
-        <%#       <td><%= product.brand.name %1></td> %>
-        <%#       <td>Pris: <%= product.price %1></td> %>
-        <%#       <td><%= truncate product.description, length: 300 %1></td> %>
-
-        <%#       <td> %>
-          <%#         <% product.categories.each do |c| %1> %>
-          <%#           <%= c.name %1> %>
-          <%#         <% end %1> %>
-        <%#       </td> %>
-      <%#       Antal: <%= product.qty %1> %>
-
-      <%#     <%= form_tag order_items_path do |f| %1> %>
-      <%#       <%= hidden_field_tag :product_id, product.id %1> %>
-      <%#       <%= hidden_field_tag :price, 1 %1> %>
-      <%#       <td><%= number_field_tag :qty, 1 %1></td> %>
-      <%#       <input class="btn waves-effect" name="commit" type="submit" value="Save changes" > %>
-      <%#       <i class="material-icons">add</i> %>
-      <%#       </input> %>
-      <%#     <% end %1> %>
-    <%#   <% end %1> %>
-  <%#   </tr> %>
-<%# </tbody> %>
-<%# </table> %>
   <tbody>
     <% @products.each do |product| %>
       <tr>
@@ -65,14 +31,15 @@
           <% end %>
         </td>
         <td><%= product.qty %></td>
+        <td>
+          <%= form_tag order_items_path do %>
+            <%= hidden_field_tag :product_id, product.id %>
+            <%= hidden_field_tag :price, 1 %>
+            <%= number_field_tag :qty, 1 %>
+            <%= submit_tag "Tilføj", id: "add-#{product.name.downcase}" %>
+          <% end %>
+        </td>
       </tr>
+    <% end %>
   </tbody>
 </table>
-        <%= form_tag order_items_path do %>
-          <%= hidden_field_tag :product_id, product.id %>
-          <%= hidden_field_tag :price, 1 %>
-          <%= number_field_tag :qty, 1 %>
-          <%= submit_tag "Tilføj", id: "add-#{product.name.downcase}" %>
-        <% end %>
-    <% end %>
-  <% end %>

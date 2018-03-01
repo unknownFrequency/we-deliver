@@ -1,27 +1,35 @@
 require "rails_helper"
+Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Listing products" do
   before do
-    @user = User.create!(name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password", name: "xxx")
+    @user = User.create!(name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
     @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
 
     @brand = Brand.create(name: "test");
-    @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
-    @product2 = Product.create!(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
+    @product1 = Product.create!(stock_item: true, name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user_id: @user.id)
+    @product2 = Product.create!(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user_id: @user.id)
   end
 
-
-  scenario "admin sees Nyt Produkt" do
+  scenario "admin ser Nyt Produkt" do
     login_as(@admin)
     visit products_path
     expect(page).to have_link("Nyt Produkt")
   end
 
+  scenario "user does not see Nyt Produkt" do
+    login_as(@user)
+    visit products_path
+    expect(page).to_not have_link("Nyt Produkt")
+  end
+
   scenario "user adds product to cart" do
     login_as(@user)
     visit products_path
-
-    find("#add-#{@product1.name.downcase}").click
+    expect(@product1).to be_a_kind_of(Product)
+    # click_button("#add-#{@product1.name.downcase}")
+    # find("#add-#{@product1.name.downcase}").click
+    click_on @product1.name
 
     expect(page).to have_current_path(cart_path)
     expect(page).to have_content("1 i kurv")

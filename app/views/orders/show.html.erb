@@ -10,6 +10,11 @@
   <li>
     <%= @order.delivery_address %>, <%= @order.zip %>
   </li>
+  <% @order.items.each do |item| %>
+    <li><%= "#{item.qty} stk. #{Product.find(item.product_id).name} til #{number_to_kr item.price}" %></li>
+  <% end %>
+
+  <hr />
   <li>I alt <%= number_to_kr(@order.total) %></li>
   <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er lukket" %></li>
 </ul>
