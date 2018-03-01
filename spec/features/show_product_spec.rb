@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Showing an product" do
   before do
-    @admin = User.create!(admin: 1, email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    @user = User.create!(email: "b@a.a", phone: "30131269", password: "password", password_confirmation: "password")
+    @admin = User.create!(name: "admin", admin: 1, email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
+    @user = User.create!(name: "user", email: "b@a.a", phone: "30131269", password: "password", password_confirmation: "password")
 
     @brand = Brand.create(name: "testtest")
     @category = Category.create(name: "cat")

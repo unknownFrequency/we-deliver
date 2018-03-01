@@ -2,12 +2,10 @@ require "rails_helper"
 
 RSpec.feature "Listing products" do
   before do
-    @user = User.create!(
-      name: "Ruben T", address: "her 12", zip: "7741",
-      email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password", name: "xxx")
+    @user = User.create!(name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password", name: "xxx")
+    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
 
     @brand = Brand.create(name: "test");
-    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
     @product1 = Product.create(name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
     @product2 = Product.create!(name: "Colaz", description: "Bubbely", price: 25, brand_id: 1, user: @admin)
   end
@@ -60,8 +58,8 @@ RSpec.feature "Listing products" do
     expect(page).to have_content(@product2.description)
     expect(page).to have_content(@product1.price)
     expect(page).to have_content(@product2.price)
-    expect(page).to have_content(@product1.brand_id)
-    expect(page).to have_content(@product2.brand_id)
+    expect(page).to have_content(@product1.brand.name)
+    expect(page).to have_content(@product2.brand.name)
   end
 
   scenario "We list all products" do
@@ -74,8 +72,8 @@ RSpec.feature "Listing products" do
     expect(page).not_to have_content(@product2.description)
     expect(page).not_to have_content(@product1.price)
     expect(page).not_to have_content(@product2.price)
-    expect(page).not_to have_content(@product1.brand_id)
-    expect(page).not_to have_content(@product2.brand_id)
+    expect(page).not_to have_content(@product1.brand.name)
+    expect(page).not_to have_content(@product2.brand.name)
     # expect(page).not_to have_content(@product1.category)
     # expect(page).not_to have_content(@product2.category)
 

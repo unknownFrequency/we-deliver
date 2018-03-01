@@ -3,7 +3,7 @@ Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Signout user" do
   before do
-    @user = User.create!(phone: "12312312", password: "password", password_confirmation: "password")
+    @user = User.create!(name: "user",phone: "12312312", password: "password", password_confirmation: "password") 
 
     visit "/"
     click_link "Login"

@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe "Products", type: :request do
   before do
-    @user = User.create!(email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
+    @user = User.create!(name: "test", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
+    @admin = User.create!(name: "test", admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password")
     @brand = Brand.create(name: "test")
     category = Category.create(name: "cat")
 
