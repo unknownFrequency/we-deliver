@@ -1,18 +1,17 @@
 class OrderItemsController < ApplicationController
   def index
-    # render plain: current_cart.order.inspect
+    @product = Product.new
     @items = current_cart.order.items
     @order = current_cart.order
   end
 
   def create
-    # p params
     current_cart.add_item(
       product_id: params[:product_id],
       qty: params[:qty],
     )
 
-    redirect_to cart_path
+    # redirect_to cart_path
   end
 
 

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :isAdmin, except: [:index, :show]
+  before_action :isAdmin, except: [:index, :show, :create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -13,15 +13,33 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # render plain: params.inspect
+    # render plain: @product.inspect
     @product = Product.new(product_params)
     @product.user = current_user
+
+    # If product is added from cart_path and not from new_product_path
+    # which means a product is created on the fly witout stock
+    if URI(request.referer).path == "/cart"
+      # current_cart.add_item(product_id: @product.id, qty: @product.qty)
+      @product.qty = 0
+      @product.brand_id = 1
+      @product.stock_item = false
+      path = cart_path
+    else
+      path = product_path(@product)
+    end
+
     if @product.save 
-      params[:category_ids].each do |cat_id|
-        @product.categories << Category.find(cat_id) 
+      current_cart.add_item(product_id: @product.id, qty: @product.qty) if URI(request.referer).path == "/cart"
+      
+      if !params[:category_ids].nil?
+        params[:category_ids].each do |cat_id|
+          @product.categories << Category.find(cat_id) 
+        end
       end
+
       flash[:success] = "Produktet er tilføjet"
-      redirect_to product_path(@product)
+      redirect_to path
     elsif @product.errors.any?
       flash[:error] = "Produktet blev ikke oprettet"
       render :edit
