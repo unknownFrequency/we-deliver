@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
-    @products = Product.all 
+    @products = Product.where(stock_item: :true) 
   end
 
   def new
