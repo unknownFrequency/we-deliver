@@ -20,7 +20,6 @@ class ShoppingCart
     end
   end
 
-
   def add_item(product_id:, qty: 1)
     product = Product.find(product_id)
     order_item = order.items.find_or_initialize_by(product_id: product_id)

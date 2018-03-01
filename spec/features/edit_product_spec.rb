@@ -7,12 +7,12 @@ RSpec.feature "Edit a product" do
       name: "Ruben T", address: "her 12", zip: "7741", admin: 1,
       email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
 
-    brand = Brand.create(name: "test")
-    category = Category.create(name: "Sodavand")
+    brand = Brand.create!(name: "test")
+    category = Category.create!(name: "Sodavand")
 
-    @product = Product.create(
+    @product = Product.create!(
       name: "test", description: "test", price: 100.5,
-      user_id: @admin.id, brand_id: brand.id
+      user_id: @admin.id, brand_id: brand.id, stock_item: true
     )
     expect(@product).to be_a_kind_of(Product)
     expect(category).to be_a_kind_of(Category)
@@ -21,9 +21,8 @@ RSpec.feature "Edit a product" do
 
   scenario "Admin  updates a product" do
     login_as(@admin)
-    visit products_path
     
-    click_link @product.name
+    visit product_path(@product)
     click_link "Rediger"
 
     fill_in "product[name]", with: "Fanta"
@@ -44,9 +43,8 @@ RSpec.feature "Edit a product" do
 
   scenario "A user fails to update a product" do
     login_as(@admin)
-    visit products_path
+    visit product_path(@product)
     
-    click_link @product.name
     click_link "Rediger"
 
     fill_in "product[name]", with: ""

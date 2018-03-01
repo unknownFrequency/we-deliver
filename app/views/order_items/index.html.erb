@@ -12,7 +12,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.product.name %></td>
-        <td><%= number_to_currency item.price %></td>
+        <td><%= number_to_kr item.price %></td>
         <td><%= item.qty %></td>
         <td>
           <%= form_for item, method: :delete do |f| %>
@@ -37,9 +37,7 @@
   </tfoot>
 </table>
 
-
 <br />
-
 
 <%= form_for @product, :html => {class: "col s12", role: "form"} do |f| %>
   <% if @product.errors.any? %>
@@ -74,4 +72,4 @@
   </div>
 <% end %>
 
-<%= link_to "Gå til bestilling", checkout_path %>
+<%= link_to "Gem ordre", checkout_path, class: "btn" %>

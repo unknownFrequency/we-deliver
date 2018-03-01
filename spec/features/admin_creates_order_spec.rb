@@ -22,16 +22,14 @@ RSpec.feature "Creating product" do
     visit cart_path
 
     fill_in "Produkt", with: "Shampoo"
-    fill_in "Antal", with: "789"
-    fill_in "Pris", with: "12341234"
+    fill_in "Antal", with: "1000"
+    fill_in "Pris", with: "100"
     click_button "Tilføj"
 
-    expect(OrderItem.last.name).to eq "Shampoo"
     expect(page.current_path).to eq cart_path
     expect(page).to have_content("Shampoo")
-    expect(page).to have_content("789 stk.")
-    expect(page).to have_content("12341234 kr.")
-    expect(page).to have_content("Ialt: 12341234 kr.")
+    expect(page).to have_content("1000")
+    expect(page).to have_content("kr. 100,000")
 
     fill_in "Produkt", with: "Atombombe"
     fill_in "Antal", with: "1"
@@ -40,11 +38,11 @@ RSpec.feature "Creating product" do
 
     expect(page.current_path).to eq cart_path
     expect(page).to have_content("Atombombe")
-    expect(page).to have_content("1 stk.")
-    expect(page).to have_content("12341234 kr.")
-    expect(page).to have_content("Ialt: 107 kr.")
+    expect(page).to have_content("1")
+    expect(page).to have_content("kr. 107")
+    expect(page).to have_content("kr. 100,107")
 
-    click_button "Gem"
+    click_link "Gem ordre"
 
     expect(page.current_path).to eq checkout_path
   end

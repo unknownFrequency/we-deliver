@@ -31,6 +31,7 @@
   <div class="nav-wrapper">
     <ul>
       <li style="color:black"><%= link_to "Ulæste beskeder: #{@unreadMessages.count}" %></li>
+      <li style="color:black"><%= user_signed_in? && current_user.admin ? "ADMIN" : "Alm. Bruger" %></li>
     </ul>
   </div>
 </nav>
