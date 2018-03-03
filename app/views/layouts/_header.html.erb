@@ -28,8 +28,11 @@
   </div>
   <div class="nav-wrapper">
     <ul>
-      <li style="color:black"><%= link_to "Ulæste beskeder: #{@unreadMessages.count}" if isAdmin? %></li>
+      <li style="color:black">
+        <%= link_to "Ulæste beskeder: #{@unreadMessages.count}", room_path(@unreadMessages.first.room_id) if isAdmin? && @unreadMessages.first %>
+      </li>
       <li style="color:black"><%= isAdmin? ? "ADMIN" : "Alm. Bruger" %></li>
     </ul>
   </div>
 </nav>
+<%= @unreadMessages.inspect %>  
