@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :notifications
   before_action :current_cart
-  helper_method :current_cart, :isAdmin, :number_to_kr, :notifications
+  helper_method :current_cart, :isAdmin?, :number_to_kr, :notifications
 
   def notifications
     # Message.where(read: :false) if !Message.where(read: :false).first.nil?
@@ -47,7 +47,6 @@ class ApplicationController < ActionController::Base
 
   def resource_not_found
     ## Will be overwritten in the individual controllers
-    ## for individual error messages
   end
 
   def isAdmin?
