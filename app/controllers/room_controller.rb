@@ -1,6 +1,7 @@
 class RoomController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.all.order(created_at: :desc)
+
   end
 
   def new
@@ -11,6 +12,7 @@ class RoomController < ApplicationController
 
   def show
     set_current_room
+
     if current_user && (@room.user_id == current_user.id || current_user.admin)
       @message = Message.new
       @messages = @room.messages if @room && @room.messages
@@ -24,15 +26,12 @@ class RoomController < ApplicationController
           end
         end
       end
+    elsif user_signed_in?
+      room = Room.where(user_id: current_user.id).first
+      redirect_to room_path(room)
     else
-      if current_user
-        room = Room.where(user_id: current_user.id).first
-        redirect_to room_path(room)
-      else
-        redirect_to root_path
-      end
+      redirect_to root_path
     end
-
   end
 
   private

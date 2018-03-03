@@ -12,7 +12,9 @@
 			<% @rooms.each do |room| %>
 				<tr>
 					<td><%= link_to room.name, room_path(room) %></td>
-					<td><%= room.messages.last ? "#{time_ago_in_words(room.messages.last.created_at)} siden af #{User.find(room.messages.last.user_id).name}" : "Ingen beskeder" %></td>
+					<td>
+						<%= room.messages.last ? "#{time_ago_in_words(room.messages.last.created_at)} ago by #{User.find(room.messages.last.user_id).name}" : "Ingen beskeder" %>
+					</td>
 				</tr>
 			<% end %>
 	</tbody>

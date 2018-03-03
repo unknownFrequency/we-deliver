@@ -27,9 +27,6 @@ class ApplicationController < ActionController::Base
     return @unreadMessages
   end
 
-
-
-
   def current_cart
     if user_signed_in?
       @current_cart ||= ShoppingCart.new(token: cart_token, user: current_user)

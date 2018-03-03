@@ -9,8 +9,6 @@
 
       <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">
         <li><%= link_to "Beskeder", rooms_path(), id: "notification-bar" %> </li>
-        <li><%= notifications ? link_to("Ulæste Beskeder!", rooms_path(), id: "notification-bar") : link_to("Ingen nye beskeder!", rooms_path(), id: "notification-bar") %></li>
-        <li><%= link_to Room.find(1).name, room_path(1), data: {behavior: "room-link", room_id: 1}  %></li>
       </li>
     </ul>
 
@@ -30,8 +28,8 @@
   </div>
   <div class="nav-wrapper">
     <ul>
-      <li style="color:black"><%= link_to "Ulæste beskeder: #{@unreadMessages.count}" %></li>
-      <li style="color:black"><%= user_signed_in? && current_user.admin ? "ADMIN" : "Alm. Bruger" %></li>
+      <li style="color:black"><%= link_to "Ulæste beskeder: #{@unreadMessages.count}" if isAdmin? %></li>
+      <li style="color:black"><%= isAdmin? ? "ADMIN" : "Alm. Bruger" %></li>
     </ul>
   </div>
 </nav>
