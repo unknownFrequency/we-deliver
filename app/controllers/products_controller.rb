@@ -1,7 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  # before_action :isAdmin, except: [:index, :show, :create]
+  before_action :authenticate_user!, only: [:edit, :new]
+  before_action :isAdmin, except: [:show, :index]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  def create_product_from_cart(product)
+      # current_cart.add_item(product_id: @product.id, qty: @product.qty)
+      product.qty = 0
+      product.brand_id = 1
+      product.stock_item = false
+      return product
+  end
   
   def index
     @products = Product.where(stock_item: :true) 
@@ -18,13 +26,8 @@ class ProductsController < ApplicationController
     @product.user = current_user
     qty = @product.qty
 
-    # If product is added from cart_path and not from new_product_path
-    # which means a product is created on the fly witout stock
     if URI(request.referer).path == "/cart"
-      # current_cart.add_item(product_id: @product.id, qty: @product.qty)
-      @product.qty = 0
-      @product.brand_id = 1
-      @product.stock_item = false
+      @product = create_product_from_cart(@product)
       path = cart_path
     end
 
