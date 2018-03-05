@@ -1,7 +1,13 @@
 class RoomController < ApplicationController
-  def index
-    @rooms = Room.all.order(created_at: :desc)
+  before_action :isAdmin?, except: [:show]
+  before_action :authenticate_user!, only: [:edit, :new]
 
+  def index
+    if isAdmin? 
+      @rooms = Room.all.order(created_at: :desc) 
+    else 
+      redirect_to root_path, flash: {error: "Venligst opret dig med telefonnr. og addresse så vi bedre kan give dig en fair pris"}
+    end
   end
 
   def new
@@ -13,7 +19,7 @@ class RoomController < ApplicationController
   def show
     set_current_room
 
-    if current_user && (@room.user_id == current_user.id || current_user.admin)
+    if user_signed_in? && (@room.user_id == current_user.id || current_user.admin)
       @message = Message.new
       @messages = @room.messages if @room && @room.messages
 

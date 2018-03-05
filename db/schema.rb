@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20180301104655) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipient_id"
+    t.string "action"
+    t.string "notifiable_type"
+    t.integer "notifiable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer "qty", default: 0, null: false
     t.decimal "price", precision: 15, scale: 2, null: false

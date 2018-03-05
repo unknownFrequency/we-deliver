@@ -11,22 +11,23 @@
   <body>
     <%= render "layouts/header" %>
 
+    <%# <%= flash.key %1> %>
+    <%# <%= flash.message %1> %>
     <div class="row">
       <div class="col s12 m6">
         <% flash.each do |key, message| %>
-          <%= message.inspect %>
           <div id="flash-container" class="card blue-grey red darken-1">
             <div class="card-content white-text">
               <p id="flash-key"></p>
               <script>
                 window.onload = () => {
-                  document.getElementById("flash-key").innerHTML = "<%= key.capitalize %>"
+                  //document.getElementById("flash-key").innerHTML = "<%= key.capitalize %>"
                   document.getElementById("flash-message").innerHTML = "<%= message %>"
 
                   setTimeout(() => {
-                    document.getElementById("flash-key").classList.add("hidden")
+                    //document.getElementById("flash-key").classList.add("hidden")
                     document.getElementById("flash-container").classList.add("hidden")
-                  }, 5000)
+                  }, 8000)
                 }
               </script>
               <p id="flash-message"></p>
