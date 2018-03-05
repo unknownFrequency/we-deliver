@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/xreate'
-
   root to: 'products#index' 
 
   devise_for :users
@@ -22,6 +20,9 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
 
   patch "/orders/complete_order/:id", to: "orders#complete_order", as: :complete_order
+
+  post 'sms/create', to: "sms#create"
+  get 'sms/new'
 
   mount ActionCable.server => "/cable"
 

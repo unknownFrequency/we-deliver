@@ -26,6 +26,6 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
 #//   posts = $(".message-row").length
 #//   if posts > 50
 #//     $(".message-row").first().remove()
-//if activeRoom.length > 0
-//    $("[data-behavior='room-link'][data-room-id='#{roomId}']").css("font-size", "200px")
+#//if activeRoom.length > 0
+#//    $("[data-behavior='room-link'][data-room-id='#{roomId}']").css("font-size", "200px")
 

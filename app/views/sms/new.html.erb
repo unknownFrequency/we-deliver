@@ -1,0 +1,26 @@
+<div class="row" style="padding: 4em 0 0 30%">
+  <%= form_tag({controller: "sms", action: "create"}, method: "post", class: "col s12", role: "form") do %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= text_field_tag :phone_number, nil, class: "validate" %>
+        <%= label_tag "Telefon nr.", nil, class: "active" %>
+      </div>
+      <div class="input-field col s6"></div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <%= text_field_tag :message, nil, class: "validate" %>
+        <%= label_tag "Besked", nil, class: "active" %>
+      </div>
+      <div class="input-field col s6"></div>
+    </div>
+
+    <div class="row">
+      <div class="col s1">
+        <%= submit_tag "Send", class: "btn btn-large" %>
+      </div>
+      <div class="col s11"></div>
+    </div>
+  <% end %>
+</div>
