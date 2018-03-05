@@ -29,7 +29,7 @@ class SmsController < ApplicationController
 
   def create
     if params[:phone_number] && params[:message]
-      phone = "+45#{params[:phone_number]}"
+      phone = "+45#{params[:phone_number].strip}"
       send_message(phone, params[:message])
     else
       redirect_to sms_new_path, flash: {error: "Beskeden blev ikke sendt"}

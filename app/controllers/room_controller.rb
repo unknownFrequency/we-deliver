@@ -28,7 +28,6 @@ class RoomController < ApplicationController
           if unreadMsg.room_id == current_room.id && current_user.admin
             unreadMsg.read = true
             unreadMsg.save!
-            # redirect_back fallback_location: root_path
           end
         end
       end
