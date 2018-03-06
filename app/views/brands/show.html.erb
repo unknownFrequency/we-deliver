@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @brand.name %></h3>
+
+<table>
+  <thead>
+    <th>Navn</th>
+    <th>Lagerbeholdning</th>
+  </thead>
+
+  <tbody>
+    <% @brand.products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= " #{product.qty} stk på lager" %></td>
+      <tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr style="width: 20%; float: left; display: block" />
+<br />
+<span>
+  <%= link_to '<< Tilbage', brands_path %> | 
+  <%= link_to 'Rediger', edit_brand_path(@brand) %> 
+</span>
