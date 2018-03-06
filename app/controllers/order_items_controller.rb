@@ -6,10 +6,12 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    current_cart.add_item(
-      product_id: params[:product_id],
-      qty: params[:qty],
-    )
+    if params[:qty].to_i > 1
+      current_cart.add_item(
+        product_id: params[:product_id],
+        qty: params[:qty],
+      )
+    end
 
     redirect_back fallback_location: products_path
   end
