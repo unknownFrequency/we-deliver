@@ -1,3 +1,4 @@
+<%= @zips.inspect %>
 <h2>Faktura</h2>
 <h3><%= user_signed_in? && !current_user.name.nil? ? "Navn: #{current_user.name}" : "" %></h3>
 <ul>
@@ -13,15 +14,28 @@
   <% @order.items.each do |item| %>
     <li><%= "#{item.qty} stk. #{Product.find(item.product_id).name} til #{number_to_kr item.price}" %></li>
   <% end %>
+  <li><%= number_to_kr @delivery_fee %></li>
 
   <hr />
   <li>I alt <%= number_to_kr(@order.total) %></li>
   <li><%= @order.status === "open" ? "Ordren er under behandling" : "Ordren er afsluttet" %></li>
-  <% if isAdmin? %>
-    <%= form_tag complete_order_path, method: :patch do  %>
-      <%= hidden_field_tag :status, value: "complete" %>
-      <%= submit_tag "Afslut ordren", class: "btn" %>
-    <% end %>
+  <% if isAdmin? && @order.status != "complete" %>
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <li>
+      <%= form_tag complete_order_path, method: :patch do  %>
+        <%= hidden_field_tag :status, value: "complete" %>
+        <%= submit_tag "Afslut ordren", class: "btn" %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 

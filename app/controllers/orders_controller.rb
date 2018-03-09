@@ -1,4 +1,12 @@
 class OrdersController < ApplicationController
+  NEARBY_DELIVERY_FEE = BigDecimal.new("50.00")
+  FAROUT_DELIVERY_FEE = BigDecimal.new("100.00")
+
+  def calculateDeliveryFee
+    zip =  current_user.zip.nil? ? "" : current_user.zip
+    nearby_zips = (8000..8500).to_a.push(8520)
+    nearby_zips.include?(zip) ? NEARBY_DELIVERY_FEE : FAROUT_DELIVERY_FEE
+  end
 
   def new
     @order = current_cart.order
@@ -6,8 +14,6 @@ class OrdersController < ApplicationController
       @address = current_user.address.nil? ? "" : current_user.address
       @zip =  current_user.zip.nil? ? "" : current_user.zip
     end
-
-    # render plain: current_user.inspect
   end
 
   def create
@@ -27,9 +33,8 @@ class OrdersController < ApplicationController
     if @order.update_attributes(order_params)
       session[:cart_token] = nil
       updateProductQty @order
-      # render plain: @order.inspect
 
-      redirect_to order_path(@order)
+      redirect_to order_path @order 
     else
       render :new
     end
@@ -37,6 +42,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @delivery_fee = calculateDeliveryFee
   end
 
   def updateProductQty(order)
