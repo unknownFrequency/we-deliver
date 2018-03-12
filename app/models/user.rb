@@ -1,21 +1,22 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :authentication_keys => [:phone] 
 
   validates :name, presence: true
+  validates :zip, presence: true
   validates :email, allow_blank: true, presence: false
-  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }, on: :create 
-  validates :password, presence: true, length: { minimum: 8 }, on: :create
-  validates :password_confirmation, presence: true, on: :create
+  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }#, on: :create 
+  validates :password, allow_blank: true,presence: false, length: { minimum: 8 }#, on: :update
+  validates :password_confirmation, allow_blank: true,presence: false#, on: :update
 
   has_many :orders
   has_many :products
   has_many :messages
   has_one :room
 
+  # after_create  :generate_password
   after_create :create_chatroom
 
   def email_required?

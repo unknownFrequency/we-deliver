@@ -1,0 +1,30 @@
+<h2>Velkommen til WeDeliver's online bestilling</h2>
+
+<%= form_for(:user, :url => registration_path(:user)) do |f| %>
+  <%= f.hidden_field :password, value: @generated_password %>
+  <%= f.hidden_field :password_confirmation, value: @generated_password %>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <%= f.text_field :name, placeholder: "Navn" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <%= f.text_field :phone, placeholder: "Telefon nr." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <%= f.text_field :zip, placeholder: "Post nr." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <%= f.submit 'Videre', class: "btn" %>
+    </div>
+  </div>
+<% end %>

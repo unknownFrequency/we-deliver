@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart, :isAdmin?, :number_to_kr, :notifications
 
   def notifications
-    # Message.where(read: :false) if !Message.where(read: :false).first.nil?
     @unreadMessages = []
     rooms = Room.all
     rooms.each do |room|
@@ -51,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone,:last_name, :zip, :address, :name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone, :zip, :address, :name])
   end
 
   private

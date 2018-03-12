@@ -18,7 +18,7 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
       @perform "checkIn", room_id: roomId
     else
       @perform "checkOut"
-  
+
 #//   posts = $(".message-row").length
 #//   if posts > 50
 #//     $(".message-row").first().remove()
