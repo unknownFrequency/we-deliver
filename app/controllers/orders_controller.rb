@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @user = User.find(@order.user_id)
     @delivery_fee = calculateDeliveryFee
   end
 

@@ -1,12 +1,12 @@
 <h2>Faktura</h2>
 <%# <h3><%= !@order.user.name.nil? ? "Navn: #{@order.user.name}" : "" %1></h3> %>
-<h3><%= User.find(@order.user_id).name %></h3>
+<h3><%= @user.name %></h3>
 <ul>
   <li>
-    <%= user_signed_in? && !current_user.email.nil? ? "Email: #{current_user.email}" : ""  %>
+    <%= !@user.email.nil? ? "Email: #{@user.email}" : ""  %>
   </li>
   <li>
-    <%= user_signed_in? && !current_user.phone.nil? ? "Telefon: #{current_user.phone}" : ""  %>
+    <%= @user.phone ? "Telefon: #{@user.phone}" : "Ingen telefonnummer???"  %>
   </li>
   <li>
     <%= @order.delivery_address %>, <%= @order.zip %>
