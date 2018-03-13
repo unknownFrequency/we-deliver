@@ -43,3 +43,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "simplecov", require: false, :group => :test
 gem "redis"
 gem 'twilio-ruby', '~> 5.7.0'
+gem 'stripe'

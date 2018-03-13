@@ -29,3 +29,5 @@ yarn-error.log*
 .yarn-integrity
 /coverage
 /coverage/.*.json
+/config/initializers/stripe.rb
+/config/initializers/twillio.rb

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products 
   resources :brands
+  resources :charges
 
   get "/cart", to: "order_items#index"
   resources :order_items, path: "/cart/items"
