@@ -4,7 +4,7 @@
 
     <ul class="left hide-on-med-and-down">
       <li><%= link_to "Produkter", products_path %></li>
-      <li><a href="#">Ordrer</a></li>
+      <li><a href="/cart">Ordrer</a></li>
       <li class="active"><%= link_to "Skriv med os", room_path(current_user.room) if user_signed_in? && !current_user.admin %></li>
 
       <li id="notify" style="background-color: red; margin: 0 50px; padding: 0 10px;">

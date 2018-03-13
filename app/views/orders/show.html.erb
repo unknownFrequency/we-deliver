@@ -1,6 +1,6 @@
-<%= @zips.inspect %>
 <h2>Faktura</h2>
-<h3><%= user_signed_in? && !current_user.name.nil? ? "Navn: #{current_user.name}" : "" %></h3>
+<%# <h3><%= !@order.user.name.nil? ? "Navn: #{@order.user.name}" : "" %1></h3> %>
+<h3><%= User.find(@order.user_id).name %></h3>
 <ul>
   <li>
     <%= user_signed_in? && !current_user.email.nil? ? "Email: #{current_user.email}" : ""  %>

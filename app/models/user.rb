@@ -7,9 +7,11 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :zip, presence: true
   validates :email, allow_blank: true, presence: false
-  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }#, on: :create 
-  validates :password, allow_blank: true,presence: false, length: { minimum: 8 }#, on: :update
-  validates :password_confirmation, allow_blank: true,presence: false#, on: :update
+  validates :phone , uniqueness: true, presence: true, numericality: true, length: { is: 8 }
+  validates :password, allow_blank: true, presence: false, length: { minimum: 8 }#, on: :update
+  validates :password_confirmation, allow_blank: true, presence: false#, on: :update
+  validates :delivery_address, presence: false, on: :create
+  validates :delivery_address, presence: true, on: :update
 
   has_many :orders
   has_many :products

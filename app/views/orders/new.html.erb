@@ -9,14 +9,20 @@
 
   <%= f.hidden_field :status, value: "open" %>
 
-  <!-- Brugerens email til kvittering -->
   <div class="row">
+      <div class="input-field col s6">
+        <%= f.text_field :phone, class: "validate", name: "phone", 
+          value: (user_signed_in? && !current_user.phone.nil?) ? current_user.phone : "" %>
+        <%= f.label "Telefon nr.", class: "active" %>
+      </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
       <%= fields_for :users do |user_f| %>
-        <div class="input-field col s6">
-          <%= user_f.email_field :email, class: "validate", name: "email", 
-            value: user_signed_in? && !current_user.email.nil? ? current_user.email : "" %>
-          <%= user_f.label "Send kvittering til email", class: "active" %>
-        </div>
+        <%= user_f.email_field :email, class: "validate", name: "email", 
+          value: user_signed_in? && !current_user.email.nil? ? current_user.email : "" %>
+        <%= user_f.label "Send kvittering til email", class: "active" %>
+    </div>
   </div>
   <div class="row">
         <div class="input-field col s6">

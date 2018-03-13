@@ -6,8 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :notifications
   before_action :current_cart
-  helper_method :current_cart, :isAdmin?, :number_to_kr, :notifications, :send_message
+  helper_method :current_cart, :isAdmin?, :number_to_kr, :notifications, :send_message, :generate_password
 
+  def generate_password
+    random_string = [('a'..'z'), ('A'..'Z'), (0..9)].map(&:to_a).flatten
+    (0...8).map { random_string[rand(random_string.length)] }.join
+  end
 
   def send_message(phone_number, alert_message)
     # render plain: ENV['TWILIO_ACCOUNT_SID'].inspect

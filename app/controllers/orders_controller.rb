@@ -12,22 +12,31 @@ class OrdersController < ApplicationController
     @order = current_cart.order
     if user_signed_in?
       @address = current_user.address.nil? ? "" : current_user.address
-      @zip =  current_user.zip.nil? ? "" : current_user.zip
+      @zip = current_user.zip.nil? ? "" : current_user.zip
+      @phone = current_user.phone.nil? ? "" : current_user.phone
     end
   end
 
   def create
     @order = current_cart.order
-    # render plain: current_user.inspect
-    unless params[:email].nil? && current_user.email.nil?
-      current_user.email = params[:email]
-    end
-    unless params[:name].nil? && current_user.name.nil?
-      current_user.name = params[:name]
-    end
-    unless current_user.save(current_user)
-      Rails.logger.info("** ---- User did not get updates from order#create ---- **")
-      Rails.logger.info(current_user.inspect)
+
+    # render plain: params
+
+    if isAdmin?
+      user = User.new()
+      user.name = params[:name] unless params[:name].nil?
+      user.email = params[:email] unless params[:email].nil?
+      user.zip = params[:order][:zip]
+      user.address = params[:order][:delivery_address]
+      user.phone = params[:phone]
+      user.password = user.password_confirmation = generate_password
+
+      if user.save! 
+        @order.user_id = user.id 
+      else 
+        redirect_back fallback_location: cart_path, flash: { notice: "Brugeren kunne ikke oprettes! Kontakt venligst admin" } 
+        return false
+      end
     end
 
     if @order.update_attributes(order_params)
