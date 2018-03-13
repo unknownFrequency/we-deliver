@@ -6,6 +6,7 @@
       <td>Pris</td>
       <td>Antal</td>
       <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +14,18 @@
       <tr>
         <td><%= item.product.name %></td>
         <td><%= number_to_kr item.price %></td>
-        <td><%= item.qty %></td>
+        <%= form_tag order_items_path do %>
+          <%# <td><%= item.qty %1></td> %>
+          <td>
+            <%= number_field_tag :qty, item.qty %>
+          </td>
+          <%= hidden_field_tag :update_qty, true %>
+          <%= hidden_field_tag :price, 1 %>
+          <%= hidden_field_tag :product_id, item.id %>
+          <td>
+            <%= submit_tag "Opdater antal", class: "btn" %>
+          </td>
+          <% end %>
         <td>
           <%= form_for item, method: :delete do |f| %>
             <%= f.submit "Slet", class: "btn" %>
@@ -22,7 +34,6 @@
       </tr>
     <% end %>
   </tbody>
-
 
   <tfoot>
     <tr>

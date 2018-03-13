@@ -6,7 +6,14 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    if params[:qty].to_i > 1
+    if params[:update_qty]
+      current_cart.order.items.each do |item|
+        if item.id.to_i == params[:product_id].to_i 
+          item.qty = params[:qty]
+          item.save!
+        end
+      end
+    else params[:qty].to_i > 1
       current_cart.add_item(
         product_id: params[:product_id],
         qty: params[:qty],
