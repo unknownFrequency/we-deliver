@@ -23,23 +23,9 @@ class SmsController < ApplicationController
   #   redirect_to root_path
   # end
 
-  def server_error
-    raise 'A test exception'
-  end
-
-  def create
-    if params[:phone_number] && params[:message]
-      phone = "+45#{params[:phone_number].strip}"
-      send_message(phone, params[:message])
-    else
-      redirect_to sms_new_path, flash: {error: "Beskeden blev ikke sendt"}
-    end
-  end
-
-  def new
-  end
-
-  private
+  # def server_error
+  #   raise 'A test exception'
+  # end
 
   def send_message(phone_number, alert_message)
     # render plain: ENV['TWILIO_ACCOUNT_SID'].inspect
@@ -58,4 +44,17 @@ class SmsController < ApplicationController
 
     redirect_to sms_new_path, flash: {notice: "Beskeden blev sendt"}
   end
+
+  def create
+    if params[:phone_number] && params[:message]
+      phone = "+45#{params[:phone_number].strip}"
+      send_message(phone, params[:message])
+    else
+      redirect_to sms_new_path, flash: {error: "Beskeden blev ikke sendt"}
+    end
+  end
+
+  def new
+  end
+
 end

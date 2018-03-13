@@ -7,6 +7,6 @@ class HomeController < ApplicationController
 
   def generate_password
     random_string = [('a'..'z'), ('A'..'Z'), (0..9)].map(&:to_a).flatten
-    (0...14).map { random_string[rand(random_string.length)] }.join
+    (0...8).map { random_string[rand(random_string.length)] }.join
   end
 end

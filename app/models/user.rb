@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_many :messages
   has_one :room
 
-  # after_create  :generate_password
   after_create :create_chatroom
+  after_create :send_password
 
   def email_required?
     false
@@ -28,6 +28,23 @@ class User < ApplicationRecord
   end
 
   private
+
+  def send_password()
+    @twilio_number = ENV['TWILIO_NUMBER']
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    message = "Login for at se din ordre med \n Telefon nr.: #{self.phone} og \n Password: #{self.password}"
+
+    logger.debug(self.phone)
+
+    message = @client.api.account.messages.create(
+      :from => "4153600414",
+      # :to => self.phone,
+      :to => "+4520131262",
+      :body => message,
+    )
+
+    # redirect_to products_path, flash: { notice: "Tak, du er nu registreret. <br /> Du skulle have modtaget en sms med et password hvis du se din faktura" }
+  end
 
   def create_chatroom
     chatroom_name = "#{self.phone}-#{self.name}"

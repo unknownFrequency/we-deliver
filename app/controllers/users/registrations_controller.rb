@@ -2,7 +2,6 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  attr_accessor :skip_password_validation
 
   # before_action :configure_account_update_params, only: [:update]
 
@@ -14,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    redirect_to products_path
   end
 
   # GET /resource/edit
