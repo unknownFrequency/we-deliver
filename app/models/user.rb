@@ -32,12 +32,13 @@ class User < ApplicationRecord
   private
 
   def send_password()
-    @twilio_number = ENV['TWILIO_NUMBER']
-    @client = Twilio::REST::Client.new Rails.configuration.twilio.account_sid, Rails.configuration.twilio.auth_token
+    @twilio_number = "4153600414"
+    @client = Twilio::REST::Client.new Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token]
     message = "Login for at se din ordre med \n Telefon nr.: #{self.phone} og \n Password: #{self.password}"
 
+    logger.debug(@client)
     logger.debug(message)
-
+    logger.debug("#{Rails.configuration.twilio[:account_sid]} \n #{Rails.configuration.twilio[:auth_token]}")
     message = @client.api.account.messages.create(
       :from => "4153600414",
       # :to => self.phone,
@@ -45,7 +46,7 @@ class User < ApplicationRecord
       :body => message,
     )
 
-    redirect_to products_path, flash: { notice: "Tak, du er nu registreret. <br /> Du skulle have modtaget en sms med et password hvis du se din faktura" }
+    # redirect_to products_path, flash: { notice: "Tak, du er nu registreret. <br /> Du skulle have modtaget en sms med et password hvis du se din faktura" }
   end
 
   def create_chatroom

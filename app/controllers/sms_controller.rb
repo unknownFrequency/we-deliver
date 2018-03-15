@@ -30,7 +30,7 @@ class SmsController < ApplicationController
   def send_message(phone_number, alert_message)
     # render plain: ENV['TWILIO_ACCOUNT_SID'].inspect
     @twilio_number = "4153600414"
-    @client = Twilio::REST::Client.new Rails.configuration.account_sid, Rails.configuration.auth_token
+    @client = Twilio::REST::Client.new Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token]
     # @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
     message = @client.api.account.messages.create(
