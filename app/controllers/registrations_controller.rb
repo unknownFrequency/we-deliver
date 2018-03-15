@@ -9,8 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        # respond_with resource, location: after_sign_up_path_for(resource)
-        redirect_to products_path, flash: { notice: "Tak, du er nu registreret. \n Du skulle have modtaget en sms med et password så du kan se din faktura" }
+        # redirect_to products_path, flash: { notice: "Tak, du er nu registreret. \n Du skulle have modtaget en sms med et password så du kan se din faktura" }
+        respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
@@ -28,7 +28,14 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     # '/an/example/path' # Or :prefix_to_your_route
-    redirect_to products_path, flash: { notice: "Tak, du er nu registreret. \n Du skulle have modtaget en sms med et password så du kan se din faktura" }
+    flash[:notice] = "Tak, du er nu registreret. \n Du skulle have modtaget en sms med et password så du kan se din faktura" 
+    "/products"
   end
 
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:name, :address,:zip, :phone, :email, :password, :password_confirmation)
+  end
 end
