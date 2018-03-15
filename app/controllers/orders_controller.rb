@@ -10,10 +10,12 @@ class OrdersController < ApplicationController
 
   def new
     @order = current_cart.order
-    if user_signed_in?
+    if user_signed_in? && !isAdmin?
+      @email = current_user.email.nil? ? "" : current_user.email
       @address = current_user.address.nil? ? "" : current_user.address
       @zip = current_user.zip.nil? ? "" : current_user.zip
       @phone = current_user.phone.nil? ? "" : current_user.phone
+      @name = current_user.name.nil? ? "" : current_user.name
     end
   end
 
