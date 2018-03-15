@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Faktura for  tlf. <%= @user.phone %></h1>
+    <p>
+      Tak for din bestilling hos weDELIVER.
+    </p>
+    <p>
+      Du har i alt betalt <%= number_to_currency(@order.total, strip_insignificant_zeros: true, :unit=>'kr. ') %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

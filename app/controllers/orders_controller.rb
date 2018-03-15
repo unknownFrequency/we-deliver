@@ -10,17 +10,17 @@ class OrdersController < ApplicationController
 
   def new
     @order = current_cart.order
-    if user_signed_in?
+    if user_signed_in? && !isAdmin?
+      @email = current_user.email.nil? ? "" : current_user.email
       @address = current_user.address.nil? ? "" : current_user.address
       @zip = current_user.zip.nil? ? "" : current_user.zip
       @phone = current_user.phone.nil? ? "" : current_user.phone
+      @name = current_user.name.nil? ? "" : current_user.name
     end
   end
 
   def create
     @order = current_cart.order
-
-    # render plain: params
 
     if isAdmin?
       user = User.new()
@@ -31,18 +31,23 @@ class OrdersController < ApplicationController
       user.phone = params[:phone]
       user.password = user.password_confirmation = generate_password
 
-      if user.save! 
-        @order.user_id = user.id 
-      else 
-        redirect_back fallback_location: cart_path, flash: { notice: "Brugeren kunne ikke oprettes! Kontakt venligst admin" } 
-        return false
-      end
+      UserMailer.invoice_email(user, @order).deliver_now if user #if admin created order
+
+      redirect_back fallback_location: cart_path, flash: { notice: "Brugeren kunne ikke oprettes! Kontakt venligst admin" } 
+      return false
+    elsif user_signed_in? && !current_user.email.nil?
+      UserMailer.invoice_email(current_user, @order).deliver_now if user #if admin created order
     end
+
+      # user.save! if !User.where(phone: params[:phone]).first 
+      #   @order.user_id = user.id 
+      # else 
 
     if @order.update_attributes(order_params)
       session[:cart_token] = nil
       updateProductQty @order
 
+      # TODO . Setup bg job for sending mails eg. deliver_later 
       redirect_to order_path @order 
       # redirect_to new_charge_path({ order: @order.id })
     else
