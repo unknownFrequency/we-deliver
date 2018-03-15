@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
   def send_password()
     @twilio_number = ENV['TWILIO_NUMBER']
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new Rails.configuration.account_sid, twilio_auth_token
     message = "Login for at se din ordre med \n Telefon nr.: #{self.phone} og \n Password: #{self.password}"
 
     logger.debug(self.phone)

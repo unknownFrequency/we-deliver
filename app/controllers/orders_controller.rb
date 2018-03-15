@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   FAROUT_DELIVERY_FEE = BigDecimal.new("100.00")
 
   def calculateDeliveryFee
-    zip =  current_user.zip.nil? ? "" : current_user.zip
+    zip = user_signed_in? && current_user.zip.nil? ? "" : 8000 #todo
     nearby_zips = (8000..8500).to_a.push(8520)
     nearby_zips.include?(zip) ? NEARBY_DELIVERY_FEE : FAROUT_DELIVERY_FEE
   end
@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
       updateProductQty @order
 
       redirect_to order_path @order 
+      # redirect_to new_charge_path({ order: @order.id })
     else
       render :new
     end

@@ -1,4 +1,5 @@
 <h2>Din Kurv</h2>
+
 <table>
   <thead>
     <tr>
@@ -83,6 +84,6 @@
       </div>
     </div>
   <% end %>
-
-  <%= link_to "Gem ordre", checkout_path, class: "btn" %>
 <% end %>
+
+<%= link_to isAdmin? ? "Gem ordre" : "Bestil", checkout_path, class: "btn" %>
