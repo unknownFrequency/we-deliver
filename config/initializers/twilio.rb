@@ -1,4 +1,4 @@
-Rails.configuration.twillio = {
+Rails.configuration.twilio = {
   # config.account_sid = Rails.application.secrets.twilio_account_sid
   # config.auth_token = Rails.application.secrets.twilio_auth_token
   :account_sid => "Ccfeb7731f2cc29f174073b201220918f"
