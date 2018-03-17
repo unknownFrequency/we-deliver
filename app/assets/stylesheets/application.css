@@ -17,3 +17,8 @@
 
 
 .hidden { visibility: hidden; }
+.required { 
+  color: red;
+  font-size: 2em; 
+  display: inline;
+}

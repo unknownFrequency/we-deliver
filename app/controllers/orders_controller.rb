@@ -35,12 +35,11 @@ class OrdersController < ApplicationController
       user.phone = params[:phone]
       user.password = user.password_confirmation = generate_password
 
-      UserMailer.invoice_email(user, @order).deliver_now if user #if admin created order
-
-      redirect_back fallback_location: cart_path, flash: { notice: "Brugeren kunne ikke oprettes! Kontakt venligst admin" } 
-      return false
+      UserMailer.invoice_email(user, @order).deliver_now if user.email 
+      # redirect_back fallback_location: cart_path, flash: { notice: "Noget gik galt!" } 
+      # return false
     elsif user_signed_in? && !current_user.email.nil?
-      UserMailer.invoice_email(current_user, @order).deliver_now if user #if admin created order
+      UserMailer.invoice_email(current_user, @order).deliver_now
     end
 
       # user.save! if !User.where(phone: params[:phone]).first 
@@ -50,10 +49,11 @@ class OrdersController < ApplicationController
     if @order.update_attributes(order_params)
       session[:cart_token] = nil
       updateProductQty @order
-
-      # TODO . Setup bg job for sending mails eg. deliver_later 
-      redirect_to order_path @order 
-      # redirect_to new_charge_path({ order: @order.id })
+      if user_signed_in? 
+        redirect_to order_path @order 
+      else
+        redirect_to products_path, notice: "Tak for din bestilling" 
+      end
     else
       render :new
     end

@@ -11,6 +11,7 @@
 
   <div class="row">
       <div class="input-field col s6">
+        <span class="required">*</span>
         <%= f.text_field :phone, class: "validate", name: "phone", 
           value: @phone ? @phone : "" %>
         <%= f.label "Telefon nr.", class: "active" %>
@@ -26,6 +27,7 @@
   </div>
   <div class="row">
         <div class="input-field col s6">
+        <span class="required">*</span>
           <%= user_f.text_field :name, class: "validate", name: "name", 
             value: @name ? @name : "" %>
           <%= user_f.label "Navn", class: "active" %>
@@ -35,6 +37,7 @@
 
   <div class="row">
     <div class="input-field col s5">
+      <span class="required">*</span>
       <%= f.text_field :delivery_address, class: "validate", value: @address ? @address : "" %>
       <%= f.label :delivery_address, "Leverings addresse", class: "active"%>
     </div>
@@ -43,25 +46,26 @@
   <!--  Field Post Nr. -->
   <div class="row">
     <div class="input-field col s5">
+      <span class="required">*</span>
       <%= f.text_field :zip, class: "validate", value: @zip ? @zip : "" %>
       <%= f.label :zip, "Post nr.", class: "active"%>
     </div>
   </div>
 
   <!-- Vælg Betaling -->
-  <div class="row">
-    <div class="input-field col s5">
-      <select name="order[payment_type]" id="order_payment_type">
-        <option disabled selected value class="dropdown-content">Vælg betaling</option> 
-        <% Order::PAYMENT_TYPES.each do |key, payment| %>
-          <option class="dropdown-content" value="<%= key %>">
-          <%= payment %>
-          </option>
-        <% end %>
-      </select>
-      <%= f.label :payment_type, "Betalings metode", class: "active" %>
-    </div>
-  </div>
+  <%# <div class="row"> %>
+  <%#   <div class="input-field col s5"> %>
+  <%#     <select name="order[payment_type]" id="order_payment_type"> %>
+  <%#       <option disabled selected value class="dropdown-content">Vælg betaling</option> %> 
+  <%#       <% Order::PAYMENT_TYPES.each do |key, payment| %1> %>
+  <%#         <option class="dropdown-content" value="<%= key %1>"> %>
+  <%#         <%= payment %1> %>
+  <%#         </option> %>
+  <%#       <% end %1> %>
+  <%#     </select> %>
+  <%#     <%= f.label :payment_type, "Betalings metode", class: "active" %1> %>
+  <%#   </div> %>
+  <%# </div> %>
 
   <!-- Total pris -->
   <div class="row">
