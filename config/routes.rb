@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/cart/checkout", to: "orders#new", as: :checkout
   patch "/cart/checkout", to: "orders#create", as: :confirm_order
   get "/orders/:id", to: "orders#show", as: :order
+  get "/orders/", to: "orders#index"
 
   get "/room/:id", to: "room#show", as: :room
   get "/rooms", to: "room#index", as: :rooms

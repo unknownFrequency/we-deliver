@@ -1,0 +1,19 @@
+<h1>Alle ordrer</h1>
+
+<p>
+  <% @orders.each do |order| %>
+
+    <%= link_to "Ordre id: ##{order.id}", order_path(order.id) %>
+    <br />
+    <%= "Navn: #{@user.name}" if @user && @user.name %>
+    <%= "Email: #{order.email}" if @user && @user.email %>
+    <% order.items.each do |item| %>
+      <%= "#{item.qty} stk. {#{Product.find(item.product_id).name} - #{item.price}" %>
+    <% end %>
+    <br />
+    <%= "Total: #{order.total} kr." %>
+
+    <br />
+    <hr />
+  <% end %>
+</p>

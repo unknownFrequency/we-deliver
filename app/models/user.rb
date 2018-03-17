@@ -34,12 +34,10 @@ class User < ApplicationRecord
   def send_password()
     @twilio_number = "4153600414"
     @client = Twilio::REST::Client.new Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token]
+
     message = "Login for at se din ordre med \n Telefon nr.: #{self.phone} og \n Password: #{self.password}"
 
-    logger.debug(@client)
-    logger.debug(message)
-    logger.debug("#{Rails.configuration.twilio[:account_sid]} \n #{Rails.configuration.twilio[:auth_token]}")
-    message = @client.api.account.messages.create(
+    @client.api.account.messages.create(
       :from => "4153600414",
       # :to => self.phone,
       :to => "+4520131262",

@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     nearby_zips.include?(zip) ? NEARBY_DELIVERY_FEE : FAROUT_DELIVERY_FEE
   end
 
+  def index
+    @orders = Order.all
+  end
+
   def new
     @order = current_cart.order
     if user_signed_in? && !isAdmin?
