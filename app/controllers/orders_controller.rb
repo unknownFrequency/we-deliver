@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   NEARBY_DELIVERY_FEE = BigDecimal.new("50.00")
   FAROUT_DELIVERY_FEE = BigDecimal.new("100.00")
 
+  
+
   def calculateDeliveryFee
     zip = user_signed_in? && current_user.zip.nil? ? "" : 8000 #todo
     nearby_zips = (8000..8500).to_a.push(8520)
@@ -36,19 +38,14 @@ class OrdersController < ApplicationController
       user.password = user.password_confirmation = generate_password
 
       UserMailer.invoice_email(user, @order).deliver_now if user.email 
-      # redirect_back fallback_location: cart_path, flash: { notice: "Noget gik galt!" } 
-      # return false
     elsif user_signed_in? && !current_user.email.nil?
       UserMailer.invoice_email(current_user, @order).deliver_now
     end
 
-      # user.save! if !User.where(phone: params[:phone]).first 
-      #   @order.user_id = user.id 
-      # else 
-
     if @order.update_attributes(order_params)
       session[:cart_token] = nil
       updateProductQty @order
+
       if user_signed_in? 
         redirect_to order_path @order 
       else

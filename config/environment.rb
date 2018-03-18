@@ -8,7 +8,7 @@ WeDeliver::Application.configure do
   config.action_mailer.smtp_settings = {
     address:  "smtp.gmail.com",
     user_name: "flamingomedia.dk@gmail.com",
-    password:  "jQ0*reQ9OHUIvEb5#r#*", #todo!!
+    password:  Rails.configuration.gmail[:password], 
     port:     587,
     domain:   "wedeliver.dk",
     authentication: "plain",
