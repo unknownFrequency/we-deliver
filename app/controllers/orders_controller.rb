@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
       user.phone = params[:phone]
       user.password = user.password_confirmation = generate_password
 
-      UserMailer.invoice_email(user, @order).deliver_now if user.email 
+      UserMailer.invoice_email(user, @order).deliver_now if not user.email.empty? 
     elsif user_signed_in? && !current_user.email.nil?
       UserMailer.invoice_email(current_user, @order).deliver_now
     end
