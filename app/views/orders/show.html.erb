@@ -1,7 +1,9 @@
 <h2>Faktura</h2>
 
-<h3><%= @user.name %></h3>
 <ul>
+  <li>
+    <h3>Kundes navn: <%= @user.name %></h3>
+  </li>
   <li>
     <%= !@user.email.nil? ? "Email: #{@user.email}" : ""  %>
   </li>
@@ -9,8 +11,9 @@
     <%= @user.phone ? "Telefon: #{@user.phone}" : "Ingen telefonnummer???"  %>
   </li>
   <li>
-    <%= @order.delivery_address %>, <%= @order.zip %>
+    Leveringsaddresse: <%= @order.delivery_address %>, <%= @order.zip %>
   </li>
+  <br />  <br />
   <% @order.items.each do |item| %>
     <li><%= "#{item.qty} stk. #{Product.find(item.product_id).name} til #{number_to_kr item.price}" %></li>
   <% end %>

@@ -46,8 +46,8 @@ class OrdersController < ApplicationController
       session[:cart_token] = nil
       updateProductQty @order
 
-      if user_signed_in? 
-        redirect_to order_path @order 
+      if user_signed_in? && !isAdmin?
+        redirect_to new_charge_path id: @order.id
       else
         redirect_to products_path, notice: "Tak for din bestilling" 
       end
