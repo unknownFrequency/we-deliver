@@ -31,3 +31,6 @@ yarn-error.log*
 /coverage/.*.json
 /config/initializers/stripe.rb
 /config/initializers/twillio.rb
+/config/database.yml
+Gemfile
+Gemfile.lock
