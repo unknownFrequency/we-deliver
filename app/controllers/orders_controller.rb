@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @order = current_cart.order
 
     if isAdmin?
-      user = User.new()
+      user = User.new
       user.name = params[:name] unless params[:name].nil?
       user.email = params[:email] unless params[:email].nil?
       user.zip = params[:order][:zip]
@@ -46,7 +46,9 @@ class OrdersController < ApplicationController
       session[:cart_token] = nil
       updateProductQty @order
 
-      if user_signed_in? && !isAdmin?
+      if isAdmin?
+        redirect_to order_path @order
+      elsif user_signed_in?
         redirect_to new_charge_path id: @order.id
       else
         redirect_to products_path, notice: "Tak for din bestilling" 

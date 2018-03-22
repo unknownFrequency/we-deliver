@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "Sending a chat message" do
   before do
-    @user = User.create!(name: "RullePops1", email: "ab1@a.a", phone: "11112223", password: "password", password_confirmation: "password")
-    @admin = User.create!(admin: true, name: "RullePops2", email: "ab2@a.a", phone: "11112224", password: "password", password_confirmation: "password")
+    @user = User.create!(zip: 2222, name: "RullePops1", email: "ab1@a.a", phone: "11112223", password: "password", password_confirmation: "password")
+    @admin = User.create!(zip: 4000, admin: true, name: "RullePops2", email: "ab2@a.a", phone: "11112224", password: "password", password_confirmation: "password")
     # @user3 = User.create!(name: "RullePops3", phone: "11112225", password: "password", password_confirmation: "password")
 
     @roomName = "#{@user.phone}-#{@user.name}"
