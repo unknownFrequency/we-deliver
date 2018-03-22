@@ -1,9 +1,12 @@
 <div class="row message-row">
   <p class="message-body">
-    <span class="user-name" style="position:absolute; left: 30px">
+    <span class="user-name" style="position:absolute; left: 50px; color: #999">
+      <%= message.updated_at.strftime("%H:%M") %>
+    </span>
+    <span class="user-name" style="position:absolute; left: 110px">
       <%= message.user.name %>:
     </span>
-    <span class="user-name" style="position:absolute; left: 250px">
+    <span class="user-name" style="position:absolute; left: 350px">
       <%= message.body %>
     </span>
   </p>

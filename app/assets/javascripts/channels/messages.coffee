@@ -10,7 +10,7 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     roomId = $("#chat-box").data("room-id")
     activeRoom = $("[data-behavior='messages'][data-room-id='#{roomId}']")
 
-    $("#chat-box").append(data)
+    $("#chat-box").append(data+" "+datetime)
     $("#message-field").val("")
 
   checkIn: (roomId) ->
