@@ -37,12 +37,12 @@ class User < ApplicationRecord
 
     message = "Login for at se din ordre med \n Telefon nr.: #{self.phone} og \n Password: #{self.password}"
 
-    @client.api.account.messages.create(
-      :from => "4153600414",
-      # :to => self.phone,
-      :to => "+4520131262",
-      :body => message,
-    )
+    # @client.api.account.messages.create(
+    #   :from => "4153600414",
+    #   # :to => self.phone,
+    #   :to => "+4520131262",
+    #   :body => message,
+    # )
 
     # redirect_to products_path, flash: { notice: "Tak, du er nu registreret. <br /> Du skulle have modtaget en sms med et password hvis du se din faktura" }
   end

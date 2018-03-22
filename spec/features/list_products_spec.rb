@@ -3,8 +3,8 @@ Capybara.ignore_hidden_elements = false
 
 RSpec.feature "Listing products" do
   before do
-    @user = User.create!(name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
-    @admin = User.create!(admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
+    @user = User.create!(zip: 3000,name: "Ruben T", address: "her 12", zip: "7741", email: "a@a.a", phone: "20131262", password: "password", password_confirmation: "password")
+    @admin = User.create!(zip: 2000,admin: 1, email: "b@a.a", phone: "77777777", password: "password", password_confirmation: "password", name: "xxx")
 
     @brand = Brand.create!(name: "test");
     @product1 = Product.create!(stock_item: true, name: "Cola", description: "Bubbely", price: 25, brand_id: 1, user_id: @user.id)
@@ -30,6 +30,7 @@ RSpec.feature "Listing products" do
     # click_button("#add-#{@product1.name.downcase}")
     # find("#add-#{@product1.name.downcase}").click
     # click_on @product1.name
+    # #
 
     expect(page).to have_content("Produkter")
     expect(page).to have_current_path(products_path)

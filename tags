@@ -1,0 +1,145 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	app/channels/application_cable/connection.rb	/^module ApplicationCable$/;"	m
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::Base$/;"	c
+ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
+ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
+Brand	app/models/brand.rb	/^class Brand < ApplicationRecord$/;"	c
+BrandsController	app/controllers/brands_controller.rb	/^class BrandsController < ApplicationController$/;"	c
+BrandsHelper	app/helpers/brands_helper.rb	/^module BrandsHelper$/;"	m
+BroadcastMessageJob	app/jobs/broadcast_message_job.rb	/^class BroadcastMessageJob < ApplicationJob$/;"	c
+CategoriesController	app/controllers/categories_controller.rb	/^class CategoriesController < ApplicationController$/;"	c
+CategoriesHelper	app/helpers/categories_helper.rb	/^module CategoriesHelper$/;"	m
+CategoriesProduct	app/models/categories_product.rb	/^class CategoriesProduct < ApplicationRecord$/;"	c
+Category	app/models/category.rb	/^class Category < ApplicationRecord$/;"	c
+Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
+ChargesController	app/controllers/charges_controller.rb	/^class ChargesController < ApplicationController$/;"	c
+ChargesHelper	app/helpers/charges_helper.rb	/^module ChargesHelper$/;"	m
+Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
+HomeController	app/controllers/home_controller.rb	/^class HomeController < ApplicationController$/;"	c
+Message	app/models/message.rb	/^class Message < ApplicationRecord$/;"	c
+MessagesChannel	app/channels/messages_channel.rb	/^class MessagesChannel < ApplicationCable::Channel$/;"	c
+MessagesController	app/controllers/messages_controller.rb	/^class MessagesController < ApplicationController$/;"	c
+MessagesHelper	app/helpers/messages_helper.rb	/^module MessagesHelper$/;"	m
+Order	app/models/order.rb	/^class Order < ApplicationRecord$/;"	c
+OrderItem	app/models/order_item.rb	/^class OrderItem < ApplicationRecord$/;"	c
+OrderItemsController	app/controllers/order_items_controller.rb	/^class OrderItemsController < ApplicationController$/;"	c
+OrdersController	app/controllers/orders_controller.rb	/^class OrdersController < ApplicationController$/;"	c
+Product	app/models/product.rb	/^class Product < ApplicationRecord$/;"	c
+ProductHelper	app/helpers/product_helper.rb	/^module ProductHelper$/;"	m
+ProductsController	app/controllers/products_controller.rb	/^class ProductsController < ApplicationController$/;"	c
+RegistrationsController	app/controllers/registrations_controller.rb	/^class RegistrationsController < Devise::RegistrationsController$/;"	c
+Room	app/models/room.rb	/^class Room < ApplicationRecord$/;"	c
+RoomController	app/controllers/room_controller.rb	/^class RoomController < ApplicationController$/;"	c
+ShoppingCart	app/models/shopping_cart.rb	/^class ShoppingCart$/;"	c
+SmsController	app/controllers/sms_controller.rb	/^class SmsController < ApplicationController$/;"	c
+SmsHelper	app/helpers/sms_helper.rb	/^module SmsHelper$/;"	m
+TwilioTextMessenger	app/services/twilio_text_messenger.rb	/^class TwilioTextMessenger$/;"	c
+User	app/models/user.rb	/^class User < ApplicationRecord$/;"	c
+UserMailer	app/mailers/user_mailer.rb	/^class UserMailer < ApplicationMailer$/;"	c
+Users	app/controllers/users/confirmations_controller.rb	/^class Users::ConfirmationsController < Devise::ConfirmationsController$/;"	c
+Users	app/controllers/users/omniauth_callbacks_controller.rb	/^class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController$/;"	c
+Users	app/controllers/users/passwords_controller.rb	/^class Users::PasswordsController < Devise::PasswordsController$/;"	c
+Users	app/controllers/users/registrations_controller.rb	/^class Users::RegistrationsController < Devise::RegistrationsController$/;"	c
+Users	app/controllers/users/sessions_controller.rb	/^class Users::SessionsController < Devise::SessionsController$/;"	c
+Users	app/controllers/users/unlocks_controller.rb	/^class Users::UnlocksController < Devise::UnlocksController$/;"	c
+add_item	app/models/shopping_cart.rb	/^  def add_item(product_id:, qty: 1)$/;"	f
+after_sign_up_path_for	app/controllers/registrations_controller.rb	/^  def after_sign_up_path_for(resource)$/;"	f	class:RegistrationsController
+after_sign_up_path_for	app/controllers/users/registrations_controller.rb	/^  def after_sign_up_path_for(resource)$/;"	f	class:Users
+brand_params	app/controllers/brands_controller.rb	/^    def brand_params$/;"	f	class:BrandsController
+calculateDeliveryFee	app/controllers/orders_controller.rb	/^  def calculateDeliveryFee$/;"	f	class:OrdersController
+call	app/services/twilio_text_messenger.rb	/^  def call$/;"	f	class:TwilioTextMessenger
+cart_token	app/controllers/application_controller.rb	/^  def cart_token$/;"	f	class:ApplicationController
+category_params	app/controllers/categories_controller.rb	/^    def category_params$/;"	f	class:CategoriesController
+checkIn	app/channels/messages_channel.rb	/^  def checkIn(data)$/;"	f	class:MessagesChannel
+checkOut	app/channels/messages_channel.rb	/^  def checkOut$/;"	f	class:MessagesChannel
+complete_order	app/controllers/orders_controller.rb	/^  def complete_order $/;"	f	class:OrdersController
+configure_permitted_parameters	app/controllers/application_controller.rb	/^  def configure_permitted_parameters$/;"	f	class:ApplicationController
+connect	app/channels/application_cable/connection.rb	/^    def connect$/;"	f	class:ApplicationCable.Connection
+create	app/controllers/brands_controller.rb	/^  def create$/;"	f	class:BrandsController
+create	app/controllers/categories_controller.rb	/^  def create$/;"	f	class:CategoriesController
+create	app/controllers/charges_controller.rb	/^  def create$/;"	f	class:ChargesController
+create	app/controllers/messages_controller.rb	/^  def create$/;"	f	class:MessagesController
+create	app/controllers/order_items_controller.rb	/^  def create$/;"	f	class:OrderItemsController
+create	app/controllers/orders_controller.rb	/^  def create$/;"	f	class:OrdersController
+create	app/controllers/products_controller.rb	/^  def create$/;"	f	class:ProductsController
+create	app/controllers/registrations_controller.rb	/^  def create$/;"	f	class:RegistrationsController
+create	app/controllers/room_controller.rb	/^  def create$/;"	f	class:RoomController
+create	app/controllers/sms_controller.rb	/^  def create$/;"	f	class:SmsController
+create	app/controllers/users/registrations_controller.rb	/^  def create$/;"	f	class:Users
+create_chatroom	app/models/user.rb	/^  def create_chatroom$/;"	f	class:User
+create_product_from_cart	app/controllers/products_controller.rb	/^  def create_product_from_cart(product)$/;"	f	class:ProductsController
+current_cart	app/controllers/application_controller.rb	/^  def current_cart$/;"	f	class:ApplicationController
+current_room	app/controllers/application_controller.rb	/^  def current_room$/;"	f	class:ApplicationController
+destroy	app/controllers/brands_controller.rb	/^  def destroy$/;"	f	class:BrandsController
+destroy	app/controllers/categories_controller.rb	/^  def destroy$/;"	f	class:CategoriesController
+destroy	app/controllers/order_items_controller.rb	/^  def destroy$/;"	f	class:OrderItemsController
+destroy	app/controllers/products_controller.rb	/^  def destroy$/;"	f	class:ProductsController
+disconnect	app/channels/application_cable/connection.rb	/^    def disconnect$/;"	f	class:ApplicationCable.Connection
+edit	app/controllers/brands_controller.rb	/^  def edit$/;"	f	class:BrandsController
+edit	app/controllers/categories_controller.rb	/^  def edit$/;"	f	class:CategoriesController
+edit	app/controllers/products_controller.rb	/^  def edit$/;"	f	class:ProductsController
+email_required?	app/models/user.rb	/^  def email_required?$/;"	f	class:User
+find_current_user	app/channels/application_cable/connection.rb	/^    def find_current_user$/;"	f	class:ApplicationCable.Connection
+find_verified_user	app/channels/application_cable/connection.rb	/^    def find_verified_user # this checks whether a user is authenticated with devise$/;"	f	class:ApplicationCable.Connection
+generate_password	app/controllers/application_controller.rb	/^  def generate_password$/;"	f	class:ApplicationController
+index	app/controllers/brands_controller.rb	/^  def index$/;"	f	class:BrandsController
+index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
+index	app/controllers/home_controller.rb	/^  def index$/;"	f	class:HomeController
+index	app/controllers/order_items_controller.rb	/^  def index$/;"	f	class:OrderItemsController
+index	app/controllers/orders_controller.rb	/^  def index$/;"	f	class:OrdersController
+index	app/controllers/products_controller.rb	/^  def index$/;"	f	class:ProductsController
+index	app/controllers/room_controller.rb	/^  def index$/;"	f	class:RoomController
+initialize	app/models/shopping_cart.rb	/^  def initialize(token:, user: nil)$/;"	f	class:ShoppingCart
+initialize	app/services/twilio_text_messenger.rb	/^  def initialize(message)$/;"	f	class:TwilioTextMessenger
+invoice_email	app/mailers/user_mailer.rb	/^  def invoice_email(user, order)$/;"	f	class:UserMailer
+isAdmin?	app/controllers/application_controller.rb	/^  def isAdmin?$/;"	f	class:ApplicationController
+items_count	app/models/shopping_cart.rb	/^  def items_count$/;"	f
+message_params	app/controllers/messages_controller.rb	/^  def message_params$/;"	f	class:MessagesController
+new	app/controllers/brands_controller.rb	/^  def new$/;"	f	class:BrandsController
+new	app/controllers/categories_controller.rb	/^  def new$/;"	f	class:CategoriesController
+new	app/controllers/charges_controller.rb	/^  def new$/;"	f	class:ChargesController
+new	app/controllers/orders_controller.rb	/^  def new$/;"	f	class:OrdersController
+new	app/controllers/products_controller.rb	/^  def new$/;"	f	class:ProductsController
+new	app/controllers/room_controller.rb	/^  def new$/;"	f	class:RoomController
+new	app/controllers/sms_controller.rb	/^  def new$/;"	f	class:SmsController
+notifications	app/controllers/application_controller.rb	/^  def notifications$/;"	f	class:ApplicationController
+number_to_kr	app/controllers/application_controller.rb	/^  def number_to_kr(amount)$/;"	f	class:ApplicationController
+order	app/models/shopping_cart.rb	/^  def order$/;"	f	class:ShoppingCart
+order_items_params	app/controllers/order_items_controller.rb	/^    def order_items_params$/;"	f	class:OrderItemsController
+order_params	app/controllers/orders_controller.rb	/^  def order_params$/;"	f	class:OrdersController
+order_params	app/controllers/room_controller.rb	/^  def order_params$/;"	f	class:RoomController
+perform	app/jobs/broadcast_message_job.rb	/^  def perform(message)$/;"	f	class:BroadcastMessageJob
+product_params	app/controllers/products_controller.rb	/^    def product_params$/;"	f	class:ProductsController
+remove_item	app/models/shopping_cart.rb	/^  def remove_item(id:)$/;"	f
+render_message	app/jobs/broadcast_message_job.rb	/^  def render_message(message)$/;"	f	class:BroadcastMessageJob
+resource_not_found	app/controllers/application_controller.rb	/^  def resource_not_found$/;"	f	class:ApplicationController
+resource_not_found	app/controllers/products_controller.rb	/^    def resource_not_found$/;"	f	class:ProductsController
+send_message	app/controllers/application_controller.rb	/^  def send_message(phone_number, alert_message)$/;"	f	class:ApplicationController
+send_message	app/controllers/sms_controller.rb	/^  def send_message(phone_number, alert_message)$/;"	f	class:SmsController
+send_password	app/models/user.rb	/^  def send_password()$/;"	f	class:User
+set_brand	app/controllers/brands_controller.rb	/^    def set_brand$/;"	f	class:BrandsController
+set_category	app/controllers/categories_controller.rb	/^    def set_category$/;"	f	class:CategoriesController
+set_current_room	app/controllers/room_controller.rb	/^  def set_current_room$/;"	f	class:RoomController
+set_product	app/controllers/products_controller.rb	/^    def set_product $/;"	f	class:ProductsController
+show	app/controllers/brands_controller.rb	/^  def show$/;"	f	class:BrandsController
+show	app/controllers/categories_controller.rb	/^  def show$/;"	f	class:CategoriesController
+show	app/controllers/orders_controller.rb	/^  def show$/;"	f	class:OrdersController
+show	app/controllers/products_controller.rb	/^  def show$/;"	f	class:ProductsController
+show	app/controllers/room_controller.rb	/^  def show$/;"	f	class:RoomController
+sign_up_params	app/controllers/registrations_controller.rb	/^  def sign_up_params$/;"	f	class:RegistrationsController
+subscribed	app/channels/messages_channel.rb	/^  def subscribed$/;"	f	class:MessagesChannel
+unsubscribed	app/channels/messages_channel.rb	/^  def unsubscribed$/;"	f	class:MessagesChannel
+update	app/controllers/brands_controller.rb	/^  def update$/;"	f	class:BrandsController
+update	app/controllers/categories_controller.rb	/^  def update$/;"	f	class:CategoriesController
+update	app/controllers/products_controller.rb	/^  def update$/;"	f	class:ProductsController
+updateProductQty	app/controllers/orders_controller.rb	/^  def updateProductQty(order)$/;"	f	class:OrdersController
+update_total!	app/models/shopping_cart.rb	/^  def update_total!$/;"	f
+will_save_change_to_email?	app/models/user.rb	/^  def will_save_change_to_email?$/;"	f	class:User
