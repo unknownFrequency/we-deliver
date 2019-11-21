@@ -26,11 +26,11 @@
 /node_modules
 yarn-debug.log*
 yarn-error.log*
+yarn.lock
 .yarn-integrity
 /coverage
 /coverage/.*.json
 /config/initializers/stripe.rb
 /config/initializers/twillio.rb
 /config/database.yml
-Gemfile
 Gemfile.lock
